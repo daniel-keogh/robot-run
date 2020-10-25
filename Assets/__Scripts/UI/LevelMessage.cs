@@ -18,7 +18,7 @@ public class LevelMessage : MonoBehaviour
         DisplayMessage(true);
     }
 
-    public void Continue()
+    public void OnDismiss()
     {
         DisplayMessage(false);
     }
