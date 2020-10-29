@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Jumping")]
+    [Header("Speed")]
+    [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpSpeed = 3f;
 
     [Header("Lanes")]
     [SerializeField] private float laneOffset = 3f;
-    [SerializeField] private float switchSpeed = 50f;
 
     private Vector3 moveDirection;
     private int currentLane = 1;
@@ -18,11 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private const int MIN_LANE = 0;
     private const int MAX_LANE = 2;
 
-    private CharacterController character;
-
     void Start()
     {
-        character = GetComponent<CharacterController>();
+
     }
 
     void Update()
@@ -36,15 +33,6 @@ public class PlayerMovement : MonoBehaviour
             SwitchLane(Direction.RIGHT);
         }
 
-        // Mobile
-        if (Input.touchCount > 0)
-        {
-
-        }
-    }
-
-    void FixedUpdate()
-    {
         Move();
     }
 
@@ -52,14 +40,14 @@ public class PlayerMovement : MonoBehaviour
     {
         var direction = new Vector3(
             moveDirection.x,
-            character.transform.localPosition.y,
-            character.transform.localPosition.z
+            transform.position.y,
+            transform.position.z + (speed * Time.deltaTime)
         );
 
-        character.transform.localPosition = Vector3.MoveTowards(
-            character.transform.localPosition,
+        transform.localPosition = Vector3.Lerp(
+            transform.localPosition,
             direction,
-            switchSpeed * Time.fixedDeltaTime
+            1f
         );
     }
 
