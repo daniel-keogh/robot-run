@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Speed")]
@@ -13,27 +14,43 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 moveDirection;
     private int currentLane = 1;
+    private bool isJumping = false;
+
+    private SwipeInputManager swipeInputManager;
+    private Rigidbody rb;
 
     private const int MIN_LANE = 0;
     private const int MAX_LANE = 2;
 
     void Start()
     {
-
+        rb = GetComponent<Rigidbody>();
+        swipeInputManager = SwipeInputManager.FindSwipeInputManager();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || swipeInputManager.SwipeLeft)
         {
             SwitchLane(Direction.LEFT);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || swipeInputManager.SwipeRight)
         {
             SwitchLane(Direction.RIGHT);
         }
 
+        if ((Input.GetKeyDown(KeyCode.Space) || swipeInputManager.SwipeUp) && !isJumping)
+        {
+            isJumping = true;
+            rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+        }
+
         Move();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        isJumping = false;
     }
 
     private void Move()
