@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Move Speed")]
-    [SerializeField] private float forwardSpeed = 5f;
-    [SerializeField] private float horizontalSpeed = 5f;
+    [Header("Jumping")]
+    [SerializeField] private float jumpSpeed = 3f;
 
-    [Header("Smoothening")]
-    [SerializeField] private float turnSmoothTime = 0.1f;
+    [Header("Lanes")]
+    [SerializeField] private float laneOffset = 3f;
+    [SerializeField] private float switchSpeed = 50f;
 
-    private float turnSmoothVelocity;
+    private Vector3 moveDirection;
+    private int currentLane = 1;
+
+    private const int MIN_LANE = 0;
+    private const int MAX_LANE = 2;
 
     private CharacterController character;
 
@@ -22,34 +27,55 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            SwitchLane(Direction.LEFT);
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            SwitchLane(Direction.RIGHT);
+        }
+
+        // Mobile
+        if (Input.touchCount > 0)
+        {
+
+        }
+    }
+
+    void FixedUpdate()
+    {
         Move();
     }
 
     private void Move()
     {
-        // Move the player character
-        //
-        // Reference: Third Person Movement in Unity - Brackeys
-        // https://youtu.be/4HpC--2iowE
-        float horizontal = Input.GetAxisRaw("Horizontal");
+        var direction = new Vector3(
+            moveDirection.x,
+            character.transform.localPosition.y,
+            character.transform.localPosition.z
+        );
 
-        var direction = new Vector3(horizontal * horizontalSpeed, 0, forwardSpeed);
+        character.transform.localPosition = Vector3.MoveTowards(
+            character.transform.localPosition,
+            direction,
+            switchSpeed * Time.fixedDeltaTime
+        );
+    }
 
-        if (direction.magnitude >= Mathf.Epsilon)
-        {
-            // Rotate player to face the direction they're moving towards
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+    private void SwitchLane(Direction direction)
+    {
+        int targetLane = currentLane + (int)direction;
 
-            float angle = Mathf.SmoothDampAngle(
-                transform.eulerAngles.y,
-                targetAngle,
-                ref turnSmoothVelocity,
-                turnSmoothTime
-            );
+        if (targetLane < MIN_LANE || targetLane > MAX_LANE)
+            return;
 
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        currentLane = targetLane;
+        moveDirection = new Vector3((currentLane - 1) * laneOffset, 0f, 0f);
+    }
 
-            character.Move(direction * Time.deltaTime);
-        }
+    private enum Direction
+    {
+        LEFT = -1, RIGHT = 1
     }
 }
