@@ -1,20 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(Image))]
 public class LevelButton : MonoBehaviour
 {
+    [Header("Locked")]
     [SerializeField] private bool isLocked;
-    [SerializeField] private string message;
+    [SerializeField] private Sprite lockedTargetGraphic;
+
+    [Header("Locked Popup")]
+    [SerializeField] private string popupTitle;
+    [SerializeField] [TextArea(0, 100)] private string popupBody;
+
+    private SceneController sceneController;
+    private PopupManager popupManager;
 
     void Start()
     {
+        sceneController = SceneController.FindSceneController();
+        popupManager = PopupManager.FindObjectOfType<PopupManager>();
 
+        GetComponent<Image>().sprite = lockedTargetGraphic;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnClick()
     {
-
+        popupManager?.ShowPopup(popupTitle, popupBody);
     }
 }
