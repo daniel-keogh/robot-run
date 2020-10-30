@@ -561,10 +561,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 477823431, guid: 1d680cf41aa1b4a46ac8b12212dd763a, type: 3}
-      propertyPath: m_text
-      value: Confirm Password...
-      objectReference: {fileID: 0}
     - target: {fileID: 4945806147130348473, guid: 1d680cf41aa1b4a46ac8b12212dd763a,
         type: 3}
       propertyPath: m_Name
