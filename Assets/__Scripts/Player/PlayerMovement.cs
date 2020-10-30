@@ -30,22 +30,25 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || swipeInputManager.SwipeLeft)
+        if (IsInPlayMode())
         {
-            SwitchLane(Direction.LEFT);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || swipeInputManager.SwipeRight)
-        {
-            SwitchLane(Direction.RIGHT);
-        }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || swipeInputManager.SwipeLeft)
+            {
+                SwitchLane(Direction.LEFT);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow) || swipeInputManager.SwipeRight)
+            {
+                SwitchLane(Direction.RIGHT);
+            }
 
-        if ((Input.GetKeyDown(KeyCode.Space) || swipeInputManager.SwipeUp) && !isJumping)
-        {
-            isJumping = true;
-            rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
-        }
+            if ((Input.GetKeyDown(KeyCode.Space) || swipeInputManager.SwipeUp) && !isJumping)
+            {
+                isJumping = true;
+                rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+            }
 
-        Move();
+            Move();
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -77,6 +80,11 @@ public class PlayerMovement : MonoBehaviour
 
         currentLane = targetLane;
         moveDirection = new Vector3((currentLane - 1) * laneOffset, 0f, 0f);
+    }
+
+    private bool IsInPlayMode()
+    {
+        return !(PauseMenu.IsPaused || LevelMessage.IsShowing);
     }
 
     private enum Direction

@@ -10,7 +10,7 @@ public class PopupBox : MonoBehaviour
 
     public void SetContent(string title, string body)
     {
-        titleText.GetComponent<TextMeshProUGUI>().text = title;
-        bodyText.GetComponent<TextMeshProUGUI>().text = body;
+        titleText.text = title;
+        bodyText.text = body;
     }
 }
