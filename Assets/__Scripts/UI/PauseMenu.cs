@@ -27,7 +27,14 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(pauseKey))
         {
             // Pause/Unpause
-            SetPauseStatus(!isPaused);
+            if (isPaused)
+            {
+                menuUI.GetComponent<CountDown>()?.BeginCountDown();
+            }
+            else
+            {
+                SetPauseStatus(!isPaused);
+            }
         }
     }
 
