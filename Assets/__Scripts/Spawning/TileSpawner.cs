@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileSpawner : MonoBehaviour
+public class TileSpawner : Spawner<Tile>
 {
-    [SerializeField] private Tile tilePrefab;
-
     private SpawnPoint spawnPoint;
 
     void Start()
@@ -15,15 +13,14 @@ public class TileSpawner : MonoBehaviour
         spawnPoint = tiles[tiles.Length - 1].GetComponentInChildren<SpawnPoint>();
     }
 
-    void Update()
+    public override void Spawn()
     {
-
-    }
-
-    public void SpawnTile()
-    {
-        var tile = Instantiate(tilePrefab, spawnPoint.transform.position, Quaternion.identity);
-        tile.transform.SetParent(transform);
+        var tile = Instantiate(
+            prefab,
+            spawnPoint.transform.position,
+            Quaternion.identity,
+            transform
+        );
 
         // Set current tile as next spawn point
         spawnPoint = tile.GetComponentInChildren<SpawnPoint>();

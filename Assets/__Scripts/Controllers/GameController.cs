@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : Controller
+public class GameController : SingletonController
 {
     public int PlayerScore
     {
