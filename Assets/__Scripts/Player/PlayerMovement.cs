@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private int currentLane = 1;
     private bool isJumping = false;
 
-    private SwipeInputManager swipeInputManager;
+    private SwipeInputController swipeInput;
     private Rigidbody rb;
 
     private const int MIN_LANE = 0;
@@ -25,23 +25,23 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        swipeInputManager = SwipeInputManager.FindSwipeInputManager();
+        swipeInput = Controller.Find<SwipeInputController>();
     }
 
     void Update()
     {
         if (IsInPlayMode())
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || swipeInputManager.SwipeLeft)
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || swipeInput.SwipeLeft)
             {
                 SwitchLane(Direction.LEFT);
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow) || swipeInputManager.SwipeRight)
+            else if (Input.GetKeyDown(KeyCode.RightArrow) || swipeInput.SwipeRight)
             {
                 SwitchLane(Direction.RIGHT);
             }
 
-            if ((Input.GetKeyDown(KeyCode.Space) || swipeInputManager.SwipeUp) && !isJumping)
+            if ((Input.GetKeyDown(KeyCode.Space) || swipeInput.SwipeUp) && !isJumping)
             {
                 isJumping = true;
                 rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);

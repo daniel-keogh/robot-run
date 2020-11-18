@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwipeInputManager : MonoBehaviour
+public class SwipeInputController : SingletonController
 {
     [SerializeField] private float deadzone = 100f;
 
@@ -21,11 +21,6 @@ public class SwipeInputManager : MonoBehaviour
     public bool SwipeUp { get => swipeUp; }
     public bool SwipeDown { get => swipeDown; }
     public Vector2 SwipeDelta { get => swipeDelta; }
-
-    void Awake()
-    {
-        SetupSingleton();
-    }
 
     void Update()
     {
@@ -113,30 +108,5 @@ public class SwipeInputManager : MonoBehaviour
             startTouch = Vector2.zero;
             swipeDelta = Vector2.zero;
         }
-    }
-
-    private void SetupSingleton()
-    {
-        // Check for any other objects of the same type
-        if (FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject); // destroy the current object
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject); // persist across scenes
-        }
-    }
-
-    public static SwipeInputManager FindSwipeInputManager()
-    {
-        SwipeInputManager sw = FindObjectOfType<SwipeInputManager>();
-
-        if (!sw)
-        {
-            Debug.LogWarning("Missing SwipeInputManager");
-        }
-
-        return sw;
     }
 }
