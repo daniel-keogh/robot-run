@@ -4,48 +4,38 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using Utilities;
 
-public class SceneController : MonoBehaviour
+public class SceneController : Controller
 {
     [Header("Animate Scene Transitions")]
     [SerializeField] private float transitionDelay = 1f;
     [SerializeField] private Animator transitionAnimator;
 
     // Animation triggers
-    private const string ANIMATOR_TRIGGER = "Start";
+    private const string ANIM_TRIGGER = "Start";
 
-    public void PlayGame()
+    public void MainMenu(bool animate = false) => ChangeScene(SceneNames.MAIN_MENU, animate);
+    public void LevelOne(bool animate = false) => ChangeScene(SceneNames.LEVEL_ONE, animate);
+    public void LevelTwo(bool animate = false) => ChangeScene(SceneNames.LEVEL_TWO, animate);
+    public void LevelThree(bool animate = false) => ChangeScene(SceneNames.LEVEL_THREE, animate);
+
+    public void PlayGame(bool animate = false)
     {
-        // Reset the GameController singleton before re-playing.
+        // Reset the GameController before re-playing.
         FindObjectOfType<GameController>()?.ResetGame();
 
-        StartCoroutine(SceneTransition(SceneNames.LEVEL_ONE));
+        LevelOne(true);
     }
 
-    public void GoToMainMenu()
+    private void ChangeScene(string name, bool animate = false)
     {
-        StartCoroutine(SceneTransition(SceneNames.MAIN_MENU));
-    }
-
-    public void LoadLevel(int num)
-    {
-        string scene;
-
-        switch (num)
+        if (animate)
         {
-            case 1:
-                scene = SceneNames.LEVEL_ONE;
-                break;
-            case 2:
-                scene = SceneNames.LEVEL_TWO;
-                break;
-            case 3:
-                scene = SceneNames.LEVEL_THREE;
-                break;
-            default:
-                throw new System.ArgumentException($"Level {num} doesn't exist");
+            StartCoroutine(SceneTransition(name));
         }
-
-        StartCoroutine(SceneTransition(scene));
+        else
+        {
+            SceneManager.LoadSceneAsync(name);
+        }
     }
 
     private IEnumerator SceneTransition(string sceneName)
@@ -53,23 +43,11 @@ public class SceneController : MonoBehaviour
         if (transitionAnimator)
         {
             // Show an animation
-            transitionAnimator.SetTrigger(ANIMATOR_TRIGGER);
+            transitionAnimator.SetTrigger(ANIM_TRIGGER);
         }
 
         yield return new WaitForSeconds(transitionDelay);
 
         SceneManager.LoadSceneAsync(sceneName);
-    }
-
-    public static SceneController FindSceneController()
-    {
-        SceneController sc = FindObjectOfType<SceneController>();
-
-        if (!sc)
-        {
-            Debug.LogWarning("Missing SceneController");
-        }
-
-        return sc;
     }
 }

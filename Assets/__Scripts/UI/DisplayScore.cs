@@ -18,7 +18,7 @@ public class DisplayScore : MonoBehaviour
     void Start()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
-        gc = GameController.FindGameController();
+        gc = Controller.Find<GameController>();
 
         originalText = scoreText.text;
     }

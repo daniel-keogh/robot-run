@@ -19,7 +19,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         menuUI.SetActive(false);
-        sc = SceneController.FindSceneController();
+        sc = Controller.Find<SceneController>();
     }
 
     void Update()
@@ -45,8 +45,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (sc)
         {
-            Time.timeScale = 1;
-            sc.PlayGame();
+            Time.timeScale = 1f;
+            sc.PlayGame(true);
         }
     }
 
@@ -54,8 +54,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (sc)
         {
-            Time.timeScale = 1;
-            sc.GoToMainMenu();
+            Time.timeScale = 1f;
+            sc.MainMenu(true);
         }
     }
 

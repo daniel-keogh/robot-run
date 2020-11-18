@@ -21,7 +21,7 @@ public class Auth : MonoBehaviour
     void Start()
     {
         popupManager = FindObjectOfType<PopupManager>();
-        sceneController = SceneController.FindSceneController();
+        sceneController = Controller.Find<SceneController>();
     }
 
     public void Login()
@@ -31,7 +31,7 @@ public class Auth : MonoBehaviour
             return;
         }
 
-        sceneController.GoToMainMenu();
+        sceneController.MainMenu(true);
     }
 
     public void Register()
@@ -41,7 +41,7 @@ public class Auth : MonoBehaviour
             return;
         }
 
-        sceneController.GoToMainMenu();
+        sceneController.MainMenu(true);
     }
 
     private bool IsValidLogin()

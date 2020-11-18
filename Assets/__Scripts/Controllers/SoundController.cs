@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class SoundController : MonoBehaviour
+public class SoundController : Controller
 {
     private AudioSource audioSource;
 
@@ -12,15 +12,19 @@ public class SoundController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public static SoundController FindSoundController()
+    public void PlayOneShot(AudioClip clip)
     {
-        SoundController sc = FindObjectOfType<SoundController>();
-
-        if (!sc)
+        if (clip)
         {
-            Debug.LogWarning("Missing SoundController");
+            audioSource.PlayOneShot(clip);
         }
+    }
 
-        return sc;
+    public void PlayOneShot(AudioClip clip, float volume)
+    {
+        if (clip)
+        {
+            audioSource.PlayOneShot(clip, volume);
+        }
     }
 }

@@ -19,7 +19,7 @@ public class LevelButton : MonoBehaviour
 
     void Start()
     {
-        sceneController = SceneController.FindSceneController();
+        sceneController = Controller.Find<SceneController>();
         popupManager = PopupManager.FindObjectOfType<PopupManager>();
 
         GetComponent<Image>().sprite = lockedTargetGraphic;
