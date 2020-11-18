@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 
-public class Pickup : MonoBehaviour
+public class PowerUp : MonoBehaviour
 {
-    [SerializeField] private int points = 1;
-    [SerializeField] private int powerupPoints = 2;
+    [SerializeField] private float duration = 5f;
 
     private GameController gc;
 
@@ -19,8 +18,14 @@ public class Pickup : MonoBehaviour
     {
         if (other.tag == Tags.PLAYER)
         {
-            gc.LogPickup(points);
+            PowerUpEnabledEvent?.Invoke(duration);
             Destroy(gameObject);
         }
     }
+
+    // Delegate type to use for event
+    public delegate void PowerUpEnabled(float duration);
+
+    // Static method to be implemented in the listener
+    public static PowerUpEnabled PowerUpEnabledEvent;
 }

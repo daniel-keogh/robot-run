@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 public class Tile : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Tile : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == Tags.PLAYER)
         {
             tileSpawner.Spawn();
             Destroy(gameObject, destoryDelay);
