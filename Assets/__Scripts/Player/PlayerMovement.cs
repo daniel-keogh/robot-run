@@ -6,8 +6,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Speed")]
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed = 10f;
     [SerializeField] private float jumpSpeed = 3f;
+    [SerializeField] private float maxSpeed = 50f;
+    [SerializeField] private float speedIncrementor = 0.5f;
 
     [Header("Lanes")]
     [SerializeField] private float laneOffset = 3f;
@@ -18,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     private SwipeInputController swipeInput;
     private Rigidbody rb;
+    private GameController gc;
+    private int prevScore = 0;
 
     private const int MIN_LANE = 0;
     private const int MAX_LANE = 2;
@@ -26,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         swipeInput = Controller.Find<SwipeInputController>();
+        gc = Controller.Find<GameController>();
     }
 
     void Update()
@@ -48,11 +53,13 @@ public class PlayerMovement : MonoBehaviour
             }
 
             Move();
+            IncreaseSpeed();
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
+        // Prevent jumping while airborne
         isJumping = false;
     }
 
@@ -85,6 +92,15 @@ public class PlayerMovement : MonoBehaviour
     private bool IsInPlayMode()
     {
         return !(PauseMenu.IsPaused || LevelMessage.IsShowing);
+    }
+
+    private void IncreaseSpeed()
+    {
+        if (gc.PlayerScore > prevScore && speed < maxSpeed)
+        {
+            speed += speedIncrementor;
+            prevScore = gc.PlayerScore;
+        }
     }
 
     private enum Direction

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TileSpawner : Spawner<Tile>
 {
+    [SerializeField] private int numDisabledAtStart = 2;
+
     private SpawnPoint spawnPoint;
 
     void Start()
@@ -11,6 +13,13 @@ public class TileSpawner : Spawner<Tile>
         // Get active tiles & set the next spawn point
         var tiles = GetComponentsInChildren<Tile>();
         spawnPoint = tiles[tiles.Length - 1].GetComponentInChildren<SpawnPoint>();
+
+        // Disable the first few tiles
+        for (int i = 0; i < numDisabledAtStart; i++)
+        {
+            tiles[i].GetComponentInChildren<ObstacleSpawner>().gameObject.SetActive(false);
+            tiles[i].GetComponentInChildren<PickupSpawner>().gameObject.SetActive(false);
+        }
     }
 
     public override void Spawn()

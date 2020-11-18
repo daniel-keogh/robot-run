@@ -48,7 +48,8 @@ public class GameController : SingletonController
             points *= 2;
         }
 
-        pickupCount += points;
+        playerScore += points;
+        pickupCount++;
     }
 
     public void ResetGame()
