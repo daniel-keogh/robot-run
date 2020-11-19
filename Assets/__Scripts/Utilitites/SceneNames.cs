@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Utilities
 {
-    public class SceneNames
+    public static class SceneNames
     {
         public const string AUTH = "Auth";
         public const string MAIN_MENU = "MainMenu";

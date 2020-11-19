@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Utilities
 {
-    public class Tags
+    public static class Tags
     {
         public const string PLAYER = "Player";
     }

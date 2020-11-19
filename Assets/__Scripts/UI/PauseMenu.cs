@@ -38,6 +38,12 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    void OnDisable()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+    }
+
     public void Pause() => SetPauseStatus(true);
     public void Resume() => SetPauseStatus(false);
 
