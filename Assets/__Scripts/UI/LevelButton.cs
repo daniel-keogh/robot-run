@@ -8,25 +8,21 @@ public class LevelButton : MonoBehaviour
 {
     [Header("Locked")]
     [SerializeField] private bool isLocked;
-    [SerializeField] private Sprite lockedTargetGraphic;
 
-    [Header("Locked Popup")]
+    [Header("Popup")]
+    [SerializeField] private PopupBox popupBox;
     [SerializeField] private string popupTitle;
     [SerializeField] [TextArea(0, 100)] private string popupBody;
 
     private SceneController sceneController;
-    private PopupManager popupManager;
 
     void Start()
     {
         sceneController = Controller.Find<SceneController>();
-        popupManager = PopupManager.FindObjectOfType<PopupManager>();
-
-        GetComponent<Image>().sprite = lockedTargetGraphic;
     }
 
     public void OnClick()
     {
-        popupManager?.ShowPopup(popupTitle, popupBody);
+        popupBox?.ShowPopup(popupTitle, popupBody);
     }
 }

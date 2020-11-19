@@ -8,6 +8,7 @@ namespace Utilities
     {
         public const string AUTH = "Auth";
         public const string MAIN_MENU = "MainMenu";
+        public const string LEADERBOARD = "Leaderboard";
         public const string GAME_OVER = "GameOver";
         public const string LEVEL_ONE = "Level 1";
         public const string LEVEL_TWO = "Level 2";

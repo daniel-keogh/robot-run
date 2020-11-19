@@ -15,6 +15,7 @@ public class SceneController : Controller
 
     public void AuthMenu(bool animate = false) => ChangeScene(SceneNames.AUTH, animate);
     public void MainMenu(bool animate = false) => ChangeScene(SceneNames.MAIN_MENU, animate);
+    public void Leaderboard(bool animate = false) => ChangeScene(SceneNames.LEADERBOARD, animate);
     public void LevelOne(bool animate = false) => ChangeScene(SceneNames.LEVEL_ONE, animate);
     public void LevelTwo(bool animate = false) => ChangeScene(SceneNames.LEVEL_TWO, animate);
     public void LevelThree(bool animate = false) => ChangeScene(SceneNames.LEVEL_THREE, animate);
@@ -24,7 +25,6 @@ public class SceneController : Controller
     {
         // Reset the GameController before re-playing.
         FindObjectOfType<GameController>()?.ResetGame();
-
         LevelOne(true);
     }
 

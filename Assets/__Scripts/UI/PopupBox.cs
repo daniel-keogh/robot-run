@@ -3,14 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(Animator))]
 public class PopupBox : MonoBehaviour
 {
+    [SerializeField] private GameObject popupUI;
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI bodyText;
 
-    public void SetContent(string title, string body)
+    private Animator animator;
+
+    public const string IS_SHOWING = "IsShowing";
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    public void ShowPopup(string title, string body)
     {
         titleText.text = title;
         bodyText.text = body;
+        animator.SetBool(IS_SHOWING, true);
     }
+
+    public void HidePopup() => animator.SetBool(IS_SHOWING, false);
 }

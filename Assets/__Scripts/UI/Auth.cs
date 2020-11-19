@@ -15,12 +15,13 @@ public class Auth : MonoBehaviour
     [SerializeField] private TMP_InputField loginUsername;
     [SerializeField] private TMP_InputField loginPassword;
 
-    private PopupManager popupManager;
+    [Header("Popup")]
+    [SerializeField] private PopupBox popup;
+
     private SceneController sceneController;
 
     void Start()
     {
-        popupManager = FindObjectOfType<PopupManager>();
         sceneController = Controller.Find<SceneController>();
     }
 
@@ -88,6 +89,6 @@ public class Auth : MonoBehaviour
 
     private void InvalidCredentials(string message)
     {
-        popupManager.ShowPopup("Error", message);
+        popup.ShowPopup("Error", message);
     }
 }
