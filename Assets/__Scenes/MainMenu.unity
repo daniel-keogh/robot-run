@@ -488,6 +488,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 229791873}
     m_Modifications:
+    - target: {fileID: 576981202979213924, guid: eb7a98abcad5d3e44981b3bec8536e35,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1878359428}
     - target: {fileID: 2355592130841599965, guid: eb7a98abcad5d3e44981b3bec8536e35,
         type: 3}
       propertyPath: popupBox
@@ -609,11 +614,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1878359428}
     - target: {fileID: 6238772519375234965, guid: eb7a98abcad5d3e44981b3bec8536e35,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1878359428}
-    - target: {fileID: 6826454777440829908, guid: eb7a98abcad5d3e44981b3bec8536e35,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
