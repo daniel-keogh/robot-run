@@ -315,7 +315,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -450,7 +450,7 @@ PrefabInstance:
     - target: {fileID: 7076291404930345209, guid: b5f315655734f0c4dafb47b7b170d127,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7076291404930345209, guid: b5f315655734f0c4dafb47b7b170d127,
         type: 3}
@@ -488,11 +488,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 229791873}
     m_Modifications:
-    - target: {fileID: 1448386209108327985, guid: eb7a98abcad5d3e44981b3bec8536e35,
+    - target: {fileID: 2355592130841599965, guid: eb7a98abcad5d3e44981b3bec8536e35,
         type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -220
-      objectReference: {fileID: 0}
+      propertyPath: popupBox
+      value: 
+      objectReference: {fileID: 6867926409026600894}
     - target: {fileID: 3532793368970908656, guid: eb7a98abcad5d3e44981b3bec8536e35,
         type: 3}
       propertyPath: m_Name
@@ -608,21 +608,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1878359428}
-    - target: {fileID: 4561236499969121693, guid: eb7a98abcad5d3e44981b3bec8536e35,
-        type: 3}
-      propertyPath: popupBox
-      value: 
-      objectReference: {fileID: 6867926409026600894}
-    - target: {fileID: 4561236499969121695, guid: eb7a98abcad5d3e44981b3bec8536e35,
-        type: 3}
-      propertyPath: popupBox
-      value: 
-      objectReference: {fileID: 6867926409026600894}
-    - target: {fileID: 4756609411230054740, guid: eb7a98abcad5d3e44981b3bec8536e35,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -220
-      objectReference: {fileID: 0}
     - target: {fileID: 6238772519375234965, guid: eb7a98abcad5d3e44981b3bec8536e35,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -633,6 +618,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1878359428}
+    - target: {fileID: 8236694101370535734, guid: eb7a98abcad5d3e44981b3bec8536e35,
+        type: 3}
+      propertyPath: popupBox
+      value: 
+      objectReference: {fileID: 6867926409026600894}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb7a98abcad5d3e44981b3bec8536e35, type: 3}
 --- !u!224 &4561236499969121691 stripped

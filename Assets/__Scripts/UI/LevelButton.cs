@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
+[RequireComponent(typeof(Animator))]
 public class LevelButton : MonoBehaviour
 {
     [Header("Locked")]
     [SerializeField] private bool isLocked;
+    [SerializeField] private Color lockedColor;
 
     [Header("Popup")]
     [SerializeField] private PopupBox popupBox;
@@ -19,6 +20,11 @@ public class LevelButton : MonoBehaviour
     void Start()
     {
         sceneController = Controller.Find<SceneController>();
+
+        if (isLocked)
+        {
+            GetComponent<Image>().color = lockedColor;
+        }
     }
 
     public void OnClick()
