@@ -188,7 +188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7055045602099526626
 RectTransform:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Oops...
+  m_text: \uf05a Oops...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18a5eb925a2c90b4098406c8ef8c2cc9, type: 2}
   m_sharedMaterial: {fileID: 4909917152724793024, guid: 18a5eb925a2c90b4098406c8ef8c2cc9,
@@ -935,7 +935,7 @@ PrefabInstance:
     - target: {fileID: 7413426362687241574, guid: 0c32dce21b2934743bbbb632bb317f15,
         type: 3}
       propertyPath: m_fontSize
-      value: 51.2
+      value: 68.25
       objectReference: {fileID: 0}
     - target: {fileID: 7413426362938160628, guid: 0c32dce21b2934743bbbb632bb317f15,
         type: 3}
@@ -1010,7 +1010,7 @@ PrefabInstance:
     - target: {fileID: 7413426362938160628, guid: 0c32dce21b2934743bbbb632bb317f15,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7413426362938160628, guid: 0c32dce21b2934743bbbb632bb317f15,
         type: 3}
@@ -1060,6 +1060,11 @@ PrefabInstance:
     - target: {fileID: 7413426362938160631, guid: 0c32dce21b2934743bbbb632bb317f15,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413426362938160631, guid: 0c32dce21b2934743bbbb632bb317f15,
+        type: 3}
+      propertyPath: m_Transition
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

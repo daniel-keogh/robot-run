@@ -42,6 +42,33 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Pop
       objectReference: {fileID: 0}
+    - target: {fileID: 4470349350361452224, guid: 6255a8d985f81004bbb6dd91581cb504,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470349350361452224, guid: 6255a8d985f81004bbb6dd91581cb504,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470349350361452224, guid: 6255a8d985f81004bbb6dd91581cb504,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470349350361452224, guid: 6255a8d985f81004bbb6dd91581cb504,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a74dacc9bfcf47749a8630eac3456429,
+        type: 3}
+    - target: {fileID: 4594537954702357119, guid: 6255a8d985f81004bbb6dd91581cb504,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1404bccc6df90114eb3a195786762bfd,
+        type: 3}
     - target: {fileID: 6107276149452051401, guid: 6255a8d985f81004bbb6dd91581cb504,
         type: 3}
       propertyPath: m_fontSize
@@ -157,6 +184,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8756698932648938397, guid: 6255a8d985f81004bbb6dd91581cb504,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a0f4fb3174580f54e80054a785e4a705, type: 2}
     - target: {fileID: 9117185849694032721, guid: 6255a8d985f81004bbb6dd91581cb504,
         type: 3}
       propertyPath: m_Name

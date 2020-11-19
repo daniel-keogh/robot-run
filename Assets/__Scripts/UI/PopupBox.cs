@@ -12,7 +12,8 @@ public class PopupBox : MonoBehaviour
 
     private Animator animator;
 
-    public const string IS_SHOWING = "IsShowing";
+    private const string IS_SHOWING = "IsShowing";
+    private const string INFO_ICON = "\uf05a";
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class PopupBox : MonoBehaviour
 
     public void ShowPopup(string title, string body)
     {
-        titleText.text = title;
+        titleText.text = $"{INFO_ICON} {title}";
         bodyText.text = body;
         animator.SetBool(IS_SHOWING, true);
     }
