@@ -21,15 +21,31 @@ public class SceneController : Controller
     public void LevelThree(bool animate = false) => ChangeScene(SceneNames.LEVEL_THREE, animate);
     public void GameOver(bool animate = false) => ChangeScene(SceneNames.GAME_OVER, animate);
 
-    public void PlayGame(bool animate = false)
+    public void ReplayGame(bool animate = false)
     {
-        // Reset the GameController before re-playing.
-        FindObjectOfType<GameController>()?.ResetGame();
-        LevelOne(true);
+        var gc = FindObjectOfType<GameController>();
+
+        if (gc)
+        {
+            string level = gc.CurrentLevel;
+            ChangeScene(level, animate);
+        }
     }
 
     private void ChangeScene(string name, bool animate = false)
     {
+        // Reset the GameController if going to a level.
+        switch (name)
+        {
+            case SceneNames.LEVEL_ONE:
+            case SceneNames.LEVEL_TWO:
+            case SceneNames.LEVEL_THREE:
+                FindObjectOfType<GameController>()?.ResetGame();
+                break;
+            default:
+                break;
+        }
+
         if (animate)
         {
             StartCoroutine(SceneTransition(name));

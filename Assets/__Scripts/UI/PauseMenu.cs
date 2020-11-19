@@ -52,7 +52,7 @@ public class PauseMenu : MonoBehaviour
         if (sc)
         {
             Time.timeScale = 1f;
-            sc.PlayGame(true);
+            sc.ReplayGame(true);
         }
     }
 
