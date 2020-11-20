@@ -498,6 +498,11 @@ PrefabInstance:
       propertyPath: popupBox
       value: 
       objectReference: {fileID: 6867926409026600894}
+    - target: {fileID: 2355592130841599965, guid: eb7a98abcad5d3e44981b3bec8536e35,
+        type: 3}
+      propertyPath: levelNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3532793368970908656, guid: eb7a98abcad5d3e44981b3bec8536e35,
         type: 3}
       propertyPath: m_Name
@@ -623,6 +628,11 @@ PrefabInstance:
       propertyPath: popupBox
       value: 
       objectReference: {fileID: 6867926409026600894}
+    - target: {fileID: 8236694101370535734, guid: eb7a98abcad5d3e44981b3bec8536e35,
+        type: 3}
+      propertyPath: levelNumber
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb7a98abcad5d3e44981b3bec8536e35, type: 3}
 --- !u!224 &4561236499969121691 stripped

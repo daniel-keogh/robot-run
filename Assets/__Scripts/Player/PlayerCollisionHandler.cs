@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CapsuleCollider))]
 public class PlayerCollisionHandler : MonoBehaviour
 {
     private SceneController sc;

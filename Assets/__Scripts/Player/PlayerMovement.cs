@@ -8,8 +8,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Speed")]
     [SerializeField] private float speed = 10f;
     [SerializeField] private float jumpSpeed = 3f;
-    [SerializeField] private float maxSpeed = 50f;
-    [SerializeField] private float speedIncrementor = 0.5f;
 
     [Header("Lanes")]
     [SerializeField] private float laneOffset = 3f;
@@ -17,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
     private int currentLane = 1;
     private bool isJumping = false;
+
+    private float maxSpeed;
+    private float speedIncrementor;
 
     private SwipeInputController swipeInput;
     private Rigidbody rb;
@@ -29,8 +30,12 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
         swipeInput = Controller.Find<SwipeInputController>();
         gc = Controller.Find<GameController>();
+
+        maxSpeed = gc.CurrentLevelConfig.MaxSpeed;
+        speedIncrementor = gc.CurrentLevelConfig.SpeedIncrementor;
     }
 
     void Update()

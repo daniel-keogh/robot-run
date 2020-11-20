@@ -32,7 +32,7 @@ public class SceneController : Controller
         }
     }
 
-    private void ChangeScene(string name, bool animate = false)
+    public void ChangeScene(string name, bool animate = false)
     {
         // Reset the GameController if going to a level.
         switch (name)

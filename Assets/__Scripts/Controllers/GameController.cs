@@ -7,7 +7,13 @@ using TMPro;
 
 public class GameController : SingletonController
 {
+    [Header("UI")]
     [SerializeField] private TextMeshProUGUI scoreText;
+
+    [Header("Level Config")]
+    [SerializeField] private LevelConfig levelOne;
+    [SerializeField] private LevelConfig levelTwo;
+    [SerializeField] private LevelConfig levelThree;
 
     public int PlayerScore
     {
@@ -24,11 +30,18 @@ public class GameController : SingletonController
         get => currentLevel;
     }
 
+    public LevelConfig CurrentLevelConfig
+    {
+        get => currentLevelConfig;
+    }
+
     private int playerScore = 0;
     private int pickupCount = 0;
+    private bool leveledUp = false;
     private string currentLevel;
 
     private bool powerUpEnabled;
+    private LevelConfig currentLevelConfig;
 
     void Start()
     {
@@ -73,6 +86,11 @@ public class GameController : SingletonController
         pickupCount++;
 
         RefreshScoreUI();
+
+        if (!leveledUp && pickupCount >= currentLevelConfig.PickupsUntilLevelUp)
+        {
+            LevelUp();
+        }
     }
 
     public void ResetGame()
@@ -93,12 +111,45 @@ public class GameController : SingletonController
         switch (activeScene)
         {
             case SceneNames.LEVEL_ONE:
+                currentLevelConfig = levelOne;
+                break;
             case SceneNames.LEVEL_TWO:
+                currentLevelConfig = levelTwo;
+                break;
             case SceneNames.LEVEL_THREE:
-                currentLevel = activeScene;
+                currentLevelConfig = levelThree;
                 break;
             default:
                 break;
+        }
+
+        if (currentLevelConfig != null)
+        {
+            currentLevel = activeScene;
+        }
+    }
+
+    private void LevelUp()
+    {
+        if (currentLevel == SceneNames.LEVEL_ONE)
+        {
+            UnlockLevel(SceneNames.LEVEL_TWO);
+        }
+        else if (currentLevel == SceneNames.LEVEL_TWO)
+        {
+            UnlockLevel(SceneNames.LEVEL_THREE);
+        }
+
+        leveledUp = true;
+    }
+
+    private void UnlockLevel(string level)
+    {
+        bool isUnlocked = PlayerPrefs.HasKey(level);
+
+        if (!isUnlocked)
+        {
+            PlayerPrefs.SetInt(level, 1);
         }
     }
 }
