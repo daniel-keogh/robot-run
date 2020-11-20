@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Utilities;
 using TMPro;
@@ -14,6 +15,9 @@ public class GameController : SingletonController
     [SerializeField] private LevelConfig levelOne;
     [SerializeField] private LevelConfig levelTwo;
     [SerializeField] private LevelConfig levelThree;
+
+    [Header("Events")]
+    [SerializeField] private UnityEvent onLevelUnlocked;
 
     public int PlayerScore
     {
@@ -150,6 +154,7 @@ public class GameController : SingletonController
         if (!isUnlocked)
         {
             PlayerPrefs.SetInt(level, 1);
+            onLevelUnlocked?.Invoke();
         }
     }
 }
