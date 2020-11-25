@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAnimationHandler))]
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private SwipeInputController swipeInput;
     private Rigidbody rb;
+    private PlayerAnimationHandler animationHandler;
     private GameController gc;
     private int prevScore = 0;
 
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animationHandler = GetComponent<PlayerAnimationHandler>();
 
         swipeInput = FindObjectOfType<SwipeInputController>();
         gc = FindObjectOfType<GameController>();
@@ -83,6 +86,9 @@ public class PlayerMovement : MonoBehaviour
             direction,
             1f
         );
+
+        // Update the player's animator
+        animationHandler.UpdateAnimationState(isJumping);
     }
 
     private void SwitchLane(Direction direction)

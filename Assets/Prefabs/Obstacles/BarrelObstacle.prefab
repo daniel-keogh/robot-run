@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 921773582901182762}
   - component: {fileID: 69957027191981141}
+  - component: {fileID: 658778348211681271}
   m_Layer: 0
   m_Name: BarrelObstacle
   m_TagString: Untagged
@@ -44,6 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cfa6e569b83a54c9dce16809ff1772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &658778348211681271
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921773582901182763}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.2, z: 1.2}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &7017747762680422488
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +69,6 @@ GameObject:
   - component: {fileID: 7017747762680566006}
   - component: {fileID: 7017747762681459590}
   - component: {fileID: 7017747762682602774}
-  - component: {fileID: 7017747762680422495}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -124,16 +137,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7017747762680422495
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7017747762680422488}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 112.88916, y: 110.05876, z: 160.0099}
-  m_Center: {x: -1.1447659e-12, y: 0, z: 80.55576}
