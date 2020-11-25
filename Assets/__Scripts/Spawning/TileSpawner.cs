@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TileSpawner : Spawner<Tile>
 {
+    [Tooltip("The number of tiles that won't have any obstacles when the level begins")]
     [SerializeField] private int numDisabledAtStart = 2;
 
     private SpawnPoint spawnPoint;

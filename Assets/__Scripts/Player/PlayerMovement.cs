@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed = 3f;
 
     [Header("Lanes")]
+    [Tooltip("Defines the width of each lane in the track")]
     [SerializeField] private float laneOffset = 3f;
 
     private Vector3 moveDirection;

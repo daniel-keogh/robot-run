@@ -7,7 +7,9 @@ using Utilities;
 public class LevelButton : MonoBehaviour
 {
     [Header("Locked")]
+    [Tooltip("The level number associated with this button")]
     [SerializeField] [Range(1, 3)] private int levelNumber = 1;
+    [Tooltip("The colour the button will have if its level is locked")]
     [SerializeField] private Color lockedColor;
 
     [Header("Popup")]

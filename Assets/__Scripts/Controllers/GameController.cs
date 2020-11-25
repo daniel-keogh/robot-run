@@ -17,6 +17,7 @@ public class GameController : SingletonController
     [SerializeField] private LevelConfig levelThree;
 
     [Header("Events")]
+    [Tooltip("Event that gets fired once a new level has been unlocked")]
     [SerializeField] private UnityEvent onLevelUnlocked;
 
     public int PlayerScore
