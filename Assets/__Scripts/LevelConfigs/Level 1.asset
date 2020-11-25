@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95f132308f56b941b699cf0e48f9e5e, type: 3}
+  m_Name: Level 1
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 69957027191981141, guid: f9ac8067a73e3e24384ce973aefcacd3, type: 3}
+  - {fileID: 2522364130315788178, guid: dc152103323ddfb4e906ff47e2e07975, type: 3}
+  collectible: {fileID: 6391555510140737130, guid: cb5baccccaaecae49b5d5142444250dd,
+    type: 3}
+  environent: {fileID: -1317861968141651844, guid: 7a15a3530c8c16f44abe320e2d27c393,
+    type: 3}
+  powerUpPrefab: {fileID: 0}
+  pickupsUntilLevelUp: 10
+  maxSpeed: 50
+  speedIncrementor: 0.5

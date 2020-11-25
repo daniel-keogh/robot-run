@@ -47,14 +47,17 @@ public class GameController : SingletonController
     private bool powerUpEnabled;
     private LevelConfig currentLevelConfig;
 
+    void Awake()
+    {
+        SetCurrentLevel();
+    }
+
     void Start()
     {
         if (scoreText)
         {
             RefreshScoreUI();
         }
-
-        SetCurrentLevel();
     }
 
     private void OnEnable()

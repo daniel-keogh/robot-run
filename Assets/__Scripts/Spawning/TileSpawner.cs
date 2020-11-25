@@ -7,12 +7,16 @@ public class TileSpawner : Spawner<Tile>
     [SerializeField] private int numDisabledAtStart = 2;
 
     private SpawnPoint spawnPoint;
+    private LevelConfig levelConfig;
 
     void Start()
     {
         // Get active tiles & set the next spawn point
         var tiles = GetComponentsInChildren<Tile>();
         spawnPoint = tiles[tiles.Length - 1].GetComponentInChildren<SpawnPoint>();
+
+        var gc = FindObjectOfType<GameController>();
+        levelConfig = gc.CurrentLevelConfig;
 
         // Disable the first few tiles
         for (int i = 0; i < numDisabledAtStart; i++)
@@ -25,7 +29,7 @@ public class TileSpawner : Spawner<Tile>
     public override void Spawn()
     {
         var tile = Instantiate(
-            prefab,
+            levelConfig.Environment,
             spawnPoint.transform.position,
             Quaternion.identity,
             transform

@@ -6,19 +6,26 @@ public class ObstacleSpawner : Spawner<Obstacle>
 {
     private IList<SpawnPoint> spawnPoints;
 
+    private LevelConfig levelConfig;
+
     void Start()
     {
         spawnPoints = GetComponentsInChildren<SpawnPoint>();
+
+        var gc = FindObjectOfType<GameController>();
+        levelConfig = gc.CurrentLevelConfig;
+
         Spawn();
     }
 
     public override void Spawn()
     {
-        int rIndex = Random.Range(0, spawnPoints.Count);
+        int spawnIndex = Random.Range(0, spawnPoints.Count);
+        int obstacleIndex = Random.Range(0, levelConfig.Obstacles.Count);
 
-        Instantiate(
-            prefab,
-            spawnPoints[rIndex].transform.position,
+        Instantiate<Obstacle>(
+            levelConfig.Obstacles[obstacleIndex],
+            spawnPoints[spawnIndex].transform.position,
             Quaternion.identity,
             transform
         );
