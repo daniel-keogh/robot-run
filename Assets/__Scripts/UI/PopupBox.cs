@@ -24,7 +24,8 @@ public class PopupBox : MonoBehaviour
     {
         titleText.text = $"{INFO_ICON} {title}";
         bodyText.text = body;
-        
+
+        // Animate the popup into view
         animator.SetBool(IS_SHOWING, true);
     }
 

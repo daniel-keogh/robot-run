@@ -13,7 +13,7 @@ public class DisplayScore : MonoBehaviour
     void Start()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
-        gc = Controller.Find<GameController>();
+        gc = FindObjectOfType<GameController>();
 
         string score = "0";
 

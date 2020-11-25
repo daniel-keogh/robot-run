@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using Utilities;
 
-public class SceneController : Controller
+public class SceneController : MonoBehaviour
 {
     [Header("Animate Scene Transitions")]
     [SerializeField] private float transitionDelay = 1f;
@@ -27,6 +27,7 @@ public class SceneController : Controller
 
         if (gc)
         {
+            // Get the current level's scene name and reload it
             string level = gc.CurrentLevel;
             ChangeScene(level, animate);
         }
@@ -34,7 +35,8 @@ public class SceneController : Controller
 
     public void ChangeScene(string name, bool animate = false)
     {
-        // Reset the GameController if going to a level.
+        // Reset the GameController if going to a level
+        // Since it's a Singleton it won't be destroyed automatically
         switch (name)
         {
             case SceneNames.LEVEL_ONE:
@@ -48,6 +50,7 @@ public class SceneController : Controller
 
         if (animate)
         {
+            // Animate the scene transition with a coroutine
             StartCoroutine(SceneTransition(name));
         }
         else

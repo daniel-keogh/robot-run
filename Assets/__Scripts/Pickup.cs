@@ -12,13 +12,14 @@ public class Pickup : MonoBehaviour
 
     void Start()
     {
-        gc = Controller.Find<GameController>();
+        gc = FindObjectOfType<GameController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == Tags.PLAYER)
         {
+            // The object has been picked up by the player
             gc.LogPickup(points);
             Destroy(gameObject);
         }

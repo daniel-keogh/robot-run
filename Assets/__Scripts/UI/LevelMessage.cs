@@ -25,6 +25,8 @@ public class LevelMessage : MonoBehaviour
 
     private void DisplayMessage(bool flag)
     {
+        // Show/hide the level message
+        // If the message is shown time will be frozen
         messageUI.SetActive(flag);
         Time.timeScale = flag ? 0 : 1;
         isShowing = flag;

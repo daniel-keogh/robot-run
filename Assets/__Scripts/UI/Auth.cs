@@ -22,11 +22,12 @@ public class Auth : MonoBehaviour
 
     void Start()
     {
-        sceneController = Controller.Find<SceneController>();
+        sceneController = FindObjectOfType<SceneController>();
     }
 
     public void Login()
     {
+        // If the login is valid go to the main menu
         if (!IsValidLogin())
         {
             return;
@@ -37,6 +38,7 @@ public class Auth : MonoBehaviour
 
     public void Register()
     {
+        // If registration is valid go to the main menu
         if (!IsValidRegister())
         {
             return;
@@ -87,8 +89,9 @@ public class Auth : MonoBehaviour
         return true;
     }
 
-    private void InvalidCredentials(string message)
+    private void InvalidCredentials(string message, string title = "Error")
     {
-        popup.ShowPopup("Error", message);
+        // Display a popup with a given error message
+        popup.ShowPopup(title, message);
     }
 }

@@ -31,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        swipeInput = Controller.Find<SwipeInputController>();
-        gc = Controller.Find<GameController>();
+        swipeInput = FindObjectOfType<SwipeInputController>();
+        gc = FindObjectOfType<GameController>();
 
         maxSpeed = gc.CurrentLevelConfig.MaxSpeed;
         speedIncrementor = gc.CurrentLevelConfig.SpeedIncrementor;
@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Make sure controls are disabled if not in play mode
         if (IsInPlayMode())
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow) || swipeInput.SwipeLeft)
@@ -64,12 +65,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        // Prevent jumping while airborne
+        // Prevents player from jumping while already airborne
         isJumping = false;
     }
 
     private void Move()
     {
+        // Move forward along the z-axis
         var direction = new Vector3(
             moveDirection.x,
             transform.position.y,
@@ -85,12 +87,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void SwitchLane(Direction direction)
     {
+        // Set where the player wants to move to
         int targetLane = currentLane + (int)direction;
 
         if (targetLane < MIN_LANE || targetLane > MAX_LANE)
-            return;
+            return; // already on the edge
 
         currentLane = targetLane;
+
+        // Switch lanes using the value of laneOffset
         moveDirection = new Vector3((currentLane - 1) * laneOffset, 0f, 0f);
     }
 
@@ -101,6 +106,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void IncreaseSpeed()
     {
+        // Increase the speed whenever the player's score has increased
+        // and as long as they're still slower than the maxSpeed
         if (gc.PlayerScore > prevScore && speed < maxSpeed)
         {
             speed += speedIncrementor;

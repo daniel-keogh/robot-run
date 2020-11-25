@@ -11,13 +11,14 @@ public class PowerUp : MonoBehaviour
 
     void Start()
     {
-        gc = Controller.Find<GameController>();
+        gc = FindObjectOfType<GameController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == Tags.PLAYER)
         {
+            // Power up the player
             PowerUpEnabledEvent?.Invoke(duration);
             Destroy(gameObject);
         }

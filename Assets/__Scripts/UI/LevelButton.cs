@@ -19,13 +19,16 @@ public class LevelButton : MonoBehaviour
 
     void Start()
     {
-        sc = Controller.Find<SceneController>();
+        sc = FindObjectOfType<SceneController>();
 
+        // Check if the requested level is unlocked using PlayerPrefs
         levelName = GetLevelName();
         isUnlocked = PlayerPrefs.HasKey(levelName);
 
         if (!isUnlocked)
         {
+            // Alter the appearance of the button to indicate the level is
+            // not available yet
             GetComponent<Image>().color = lockedColor;
         }
     }
@@ -34,6 +37,7 @@ public class LevelButton : MonoBehaviour
     {
         if (!isUnlocked)
         {
+            // Show the popup indicating the level is unavailable
             popupBox?.ShowPopup(
                 "Info",
                 $"You must complete level {levelNumber - 1} first!"
@@ -47,6 +51,7 @@ public class LevelButton : MonoBehaviour
 
     private string GetLevelName()
     {
+        // Get the name of the current level's scene
         switch (levelNumber)
         {
             case 1:

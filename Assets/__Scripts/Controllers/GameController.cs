@@ -49,6 +49,7 @@ public class GameController : SingletonController
 
     void Awake()
     {
+        // Set up the LevelConfig for the current level.
         SetCurrentLevel();
     }
 
@@ -72,6 +73,7 @@ public class GameController : SingletonController
 
     private void OnPowerUpEnabled(float duration)
     {
+        // Disable the power-up after the given duration
         StartCoroutine(StartPowerUpCountdown(duration));
     }
 
@@ -86,6 +88,7 @@ public class GameController : SingletonController
     {
         if (powerUpEnabled)
         {
+            // Points are doubled in value while the power up is enabled
             points *= 2;
         }
 
@@ -94,6 +97,7 @@ public class GameController : SingletonController
 
         RefreshScoreUI();
 
+        // Check if the player has leveled up (if they haven't already)
         if (!leveledUp && pickupCount >= currentLevelConfig.PickupsUntilLevelUp)
         {
             LevelUp();
@@ -127,17 +131,15 @@ public class GameController : SingletonController
                 currentLevelConfig = levelThree;
                 break;
             default:
-                break;
+                return;
         }
 
-        if (currentLevelConfig != null)
-        {
-            currentLevel = activeScene;
-        }
+        currentLevel = activeScene;
     }
 
     private void LevelUp()
     {
+        // Unlock the next level after a certain number of points have been reached
         if (currentLevel == SceneNames.LEVEL_ONE)
         {
             UnlockLevel(SceneNames.LEVEL_TWO);
@@ -152,11 +154,15 @@ public class GameController : SingletonController
 
     private void UnlockLevel(string level)
     {
+        // Check PlayerPrefs to see if the level has already been unlocked
         bool isUnlocked = PlayerPrefs.HasKey(level);
 
         if (!isUnlocked)
         {
+            // Mark the level as unlocked using PlayerPrefs
             PlayerPrefs.SetInt(level, 1);
+
+            // Trigger an event
             onLevelUnlocked?.Invoke();
         }
     }

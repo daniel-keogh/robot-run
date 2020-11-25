@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SingletonController : Controller
+public abstract class SingletonController : MonoBehaviour
 {
     void Awake()
     {
+        // Automatically set-up a singleton for any subclasses
         SetupSingleton();
     }
 

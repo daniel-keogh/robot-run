@@ -18,6 +18,7 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private float maxSpeed = 50f;
     [SerializeField] private float speedIncrementor = 0.5f;
 
+    // Getters
     public List<Obstacle> Obstacles { get => obstacles; }
     public Pickup Collectible { get => collectible; }
     public Tile Environment { get => environent; }

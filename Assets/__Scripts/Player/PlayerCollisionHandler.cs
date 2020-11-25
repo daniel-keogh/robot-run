@@ -9,11 +9,12 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     void Start()
     {
-        sc = Controller.Find<SceneController>();
+        sc = FindObjectOfType<SceneController>();
     }
 
     private void OnCollisionEnter(Collision other)
     {
+        // Only respond if an Obstacle was hit
         if (other.collider.GetComponent<Obstacle>() != null)
         {
             Die();

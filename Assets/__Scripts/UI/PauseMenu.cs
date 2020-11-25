@@ -18,8 +18,10 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
+        // Make sure the menu is hidden on startup
         menuUI.SetActive(false);
-        sc = Controller.Find<SceneController>();
+
+        sc = FindObjectOfType<SceneController>();
     }
 
     void Update()
@@ -29,6 +31,7 @@ public class PauseMenu : MonoBehaviour
             // Pause/Unpause
             if (isPaused)
             {
+                // Show a countdown on unpause
                 menuUI.GetComponent<CountDown>()?.BeginCountDown();
             }
             else
@@ -40,6 +43,8 @@ public class PauseMenu : MonoBehaviour
 
     void OnDisable()
     {
+        // Make sure the static timeScale and isPaused variables are reset
+        // before leaving the scene
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -68,7 +73,7 @@ public class PauseMenu : MonoBehaviour
     private void SetPauseStatus(bool status)
     {
         if (LevelMessage.IsShowing)
-            return;
+            return; // don't pause if the pre-level message is showing
 
         Time.timeScale = status ? 0 : 1;
         menuUI.SetActive(status);

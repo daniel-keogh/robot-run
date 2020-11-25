@@ -18,6 +18,8 @@ public class Tile : MonoBehaviour
     {
         if (other.tag == Tags.PLAYER)
         {
+            // Once the player has left this tile destroy it after a short delay.
+            // Then spawn a new one in its place at the end of the road
             tileSpawner.Spawn();
             Destroy(gameObject, destoryDelay);
         }

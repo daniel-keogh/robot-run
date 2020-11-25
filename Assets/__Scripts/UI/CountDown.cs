@@ -16,5 +16,6 @@ public class CountDown : MonoBehaviour
 
     public void BeginCountDown() => animator.SetTrigger(UNPAUSE_TRIGGER);
 
+    // Animation event called by Unity when the coundown has ended
     public void OnCountDownEnd() => FindObjectOfType<PauseMenu>()?.Resume();
 }
