@@ -15,6 +15,7 @@ MonoBehaviour:
   obstacles:
   - {fileID: 256620134707082117, guid: 1e55801c725932a4eb52af33a9f47375, type: 3}
   - {fileID: 69957027191981141, guid: f9ac8067a73e3e24384ce973aefcacd3, type: 3}
+  - {fileID: 5500882974098816978, guid: 9bf6bd64f7ad72b4b978342cf8ffa8a9, type: 3}
   collectible: {fileID: 6391555510140737130, guid: cb5baccccaaecae49b5d5142444250dd,
     type: 3}
   environent: {fileID: -1317861968141651844, guid: 7a15a3530c8c16f44abe320e2d27c393,

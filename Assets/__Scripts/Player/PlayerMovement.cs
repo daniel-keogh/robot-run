@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         // Make sure controls are disabled if not in play mode
         if (IsInPlayMode())
         {
+            // Check for keyboard/swipe input
             if (Input.GetKeyDown(KeyCode.LeftArrow) || swipeInput.SwipeLeft)
             {
                 SwitchLane(Direction.LEFT);
@@ -64,6 +65,9 @@ public class PlayerMovement : MonoBehaviour
 
             Move();
             IncreaseSpeed();
+
+            // Update the player's animator
+            animationHandler.UpdateAnimationState(isJumping);
         }
     }
 
@@ -87,9 +91,6 @@ public class PlayerMovement : MonoBehaviour
             direction,
             1f
         );
-
-        // Update the player's animator
-        animationHandler.UpdateAnimationState(isJumping);
     }
 
     private void SwitchLane(Direction direction)

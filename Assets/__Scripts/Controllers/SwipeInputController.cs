@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Handles swipe input
+// Source: N3K EN - https://www.youtube.com/watch?v=sCgAb2cy6BY
 public class SwipeInputController : SingletonController
 {
     [SerializeField] private float deadzone = 100f;
@@ -12,8 +14,8 @@ public class SwipeInputController : SingletonController
     private bool swipeUp;
     private bool swipeDown;
 
-    private Vector2 swipeDelta;
-    private Vector2 startTouch;
+    private Vector2 swipeDelta;     // The current position minus startTouch
+    private Vector2 startTouch;     // Where the drag started
 
     public bool Tap { get => tap; }
     public bool SwipeLeft { get => swipeLeft; }
@@ -24,8 +26,10 @@ public class SwipeInputController : SingletonController
 
     void Update()
     {
+        // Reset everything
         tap = swipeLeft = swipeRight = swipeUp = swipeDown = false;
 
+        // Check for desktop input
         #region Standalone Inputs
         if (Input.GetMouseButtonDown(0))
         {
@@ -34,14 +38,17 @@ public class SwipeInputController : SingletonController
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            // If releasing the mouse click, reset the input
             startTouch = Vector2.zero;
             swipeDelta = Vector2.zero;
         }
         #endregion
 
+        // Check for mobile input
         #region Mobile Inputs
         if (Input.touches.Length > 0)
         {
+            // Get the phase of the first touch
             if (Input.touches[0].phase == TouchPhase.Began)
             {
                 tap = true;
@@ -49,15 +56,17 @@ public class SwipeInputController : SingletonController
             }
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
             {
+                // If the touch has ended, reset the input
                 startTouch = Vector2.zero;
                 swipeDelta = Vector2.zero;
             }
         }
         #endregion
 
-        // Calculate distance
+        // Calculate distance between current position and the start touch
         swipeDelta = Vector2.zero;
 
+        // A touch has occurred
         if (startTouch != Vector2.zero)
         {
             // Check with mobile
@@ -72,13 +81,13 @@ public class SwipeInputController : SingletonController
             }
         }
 
-        // Check if we're beyond the deadzone
+        // Check if we're beyond the deadzone (determines whether the input was strong enough to be considered a swipe)
         if (swipeDelta.magnitude > deadzone)
         {
-            // This is a confirmed swipe
             float x = swipeDelta.x;
             float y = swipeDelta.y;
 
+            // Check if swipe was vertical or horizontal in direction
             if (Mathf.Abs(x) > Mathf.Abs(y))
             {
                 // Left or Right
