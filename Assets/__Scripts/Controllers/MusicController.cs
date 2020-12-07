@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class MusicController : SingletonController
+public class MusicController : MonoBehaviour
 {
     private AudioSource audioSource;
 
