@@ -186,3 +186,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 5
   powerupPoints: 2
+  rotationSpeed: 250
+  pickupClip: {fileID: 0}

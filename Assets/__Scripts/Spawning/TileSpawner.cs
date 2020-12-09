@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileSpawner : Spawner<Tile>
+public class TileSpawner : MonoBehaviour
 {
     [Tooltip("The number of tiles that won't have any obstacles when the level begins")]
     [SerializeField] private int numDisabledAtStart = 2;
@@ -27,7 +27,7 @@ public class TileSpawner : Spawner<Tile>
         }
     }
 
-    public override void Spawn()
+    public void Spawn()
     {
         var tile = Instantiate(
             levelConfig.Environment,

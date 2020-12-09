@@ -35,6 +35,11 @@ public class GameController : SingletonController
         get => currentLevel;
     }
 
+    public bool PowerUpEnabled
+    {
+        get => powerUpEnabled;
+    }
+
     public LevelConfig CurrentLevelConfig
     {
         get => currentLevelConfig;

@@ -20,7 +20,8 @@ MonoBehaviour:
     type: 3}
   environent: {fileID: -1317861968141651844, guid: 7a15a3530c8c16f44abe320e2d27c393,
     type: 3}
-  powerUpPrefab: {fileID: 0}
+  powerUpPrefab: {fileID: 3015065684937196321, guid: 3c350c27b2d084d4fa98d9c42b28bb64,
+    type: 3}
   pickupsUntilLevelUp: 25
   maxSpeed: 50
   speedIncrementor: 0.5

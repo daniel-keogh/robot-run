@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleSpawner : Spawner<Obstacle>
+public class ObstacleSpawner : MonoBehaviour
 {
     private IList<SpawnPoint> spawnPoints;
 
@@ -18,7 +18,7 @@ public class ObstacleSpawner : Spawner<Obstacle>
         Spawn();
     }
 
-    public override void Spawn()
+    public void Spawn()
     {
         int spawnIndex = Random.Range(0, spawnPoints.Count);
         int obstacleIndex = Random.Range(0, levelConfig.Obstacles.Count);

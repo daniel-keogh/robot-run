@@ -6,12 +6,15 @@ using Utilities;
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] private float duration = 5f;
+    [SerializeField] private AudioClip powerUpClip;
 
     private GameController gc;
+    private SoundController sc;
 
     void Start()
     {
         gc = FindObjectOfType<GameController>();
+        sc = FindObjectOfType<SoundController>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -20,6 +23,7 @@ public class PowerUp : MonoBehaviour
         {
             // Power up the player
             PowerUpEnabledEvent?.Invoke(duration);
+            sc.PlayOneShot(powerUpClip);
             Destroy(gameObject);
         }
     }

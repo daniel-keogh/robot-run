@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] float destoryDelay = 3f;
 
-    private Spawner<Tile> tileSpawner;
+    private TileSpawner tileSpawner;
 
     void Start()
     {
