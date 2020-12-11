@@ -27,7 +27,7 @@ public class PickupSpawner : MonoBehaviour
         Spawn();
     }
 
-    public void Spawn()
+    private void Spawn()
     {
         int rIndex = Random.Range(0, spawnPoints.Count);
 

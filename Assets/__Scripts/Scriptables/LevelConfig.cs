@@ -18,6 +18,10 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private float maxSpeed = 50f;
     [SerializeField] private float speedIncrementor = 0.5f;
 
+    [Header("Spawning")]
+    [SerializeField] [Range(1, 3)] private int minObstaclesPerRow = 1;
+    [SerializeField] [Range(1, 3)] private int maxObstaclesPerRow = 2;
+
     // Getters
     public List<Obstacle> Obstacles { get => obstacles; }
     public Pickup Collectible { get => collectible; }
@@ -28,4 +32,7 @@ public class LevelConfig : ScriptableObject
 
     public float MaxSpeed { get => maxSpeed; }
     public float SpeedIncrementor { get => speedIncrementor; }
+
+    public int MinObstaclesPerRow { get => minObstaclesPerRow; }
+    public int MaxObstaclesPerRow { get => maxObstaclesPerRow; }
 }

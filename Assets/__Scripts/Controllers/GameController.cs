@@ -172,8 +172,12 @@ public class GameController : SingletonController
 
             // Update player stats
             var playFabStats = FindObjectOfType<PlayFabStats>();
-            playFabStats.PlayerLevel = number;
-            playFabStats.SetStats();
+
+            if (playFabStats)
+            {
+                playFabStats.PlayerLevel = number;
+                playFabStats.SetStats();
+            }
 
             // Trigger an event
             onLevelUnlocked?.Invoke();

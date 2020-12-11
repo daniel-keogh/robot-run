@@ -18,16 +18,34 @@ public class ObstacleSpawner : MonoBehaviour
         Spawn();
     }
 
-    public void Spawn()
+    private void Spawn()
     {
-        int spawnIndex = Random.Range(0, spawnPoints.Count);
-        int obstacleIndex = Random.Range(0, levelConfig.Obstacles.Count);
+        int obstaclesInRow = Random.Range(levelConfig.MinObstaclesPerRow, levelConfig.MaxObstaclesPerRow + 1);
 
-        Instantiate<Obstacle>(
-            levelConfig.Obstacles[obstacleIndex],
-            spawnPoints[spawnIndex].transform.position,
-            Quaternion.identity,
-            transform
-        );
+        List<int> usedRows = new List<int>();
+
+        for (int i = 0; i < obstaclesInRow; i++)
+        {
+            int spawnIndex;
+
+            // Generate an available spawnIndex
+            do
+            {
+                spawnIndex = Random.Range(0, spawnPoints.Count);
+            }
+            while (usedRows.Contains(spawnIndex));
+
+            int obstacleIndex = Random.Range(0, levelConfig.Obstacles.Count);
+
+            Instantiate<Obstacle>(
+                levelConfig.Obstacles[obstacleIndex],
+                spawnPoints[spawnIndex].transform.position,
+                Quaternion.identity,
+                transform
+            );
+
+            // keep track of used spawnIndexes
+            usedRows.Add(spawnIndex);
+        }
     }
 }
