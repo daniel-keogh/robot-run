@@ -24,4 +24,10 @@ public class AccountInfo : MonoBehaviour
             username.text += " " + PlayerPrefs.GetString(PrefKeys.EMAIL);
         }
     }
+
+    public void Logout()
+    {
+        PlayerPrefs.DeleteAll();
+        FindObjectOfType<SceneController>()?.AuthMenu(true);
+    }
 }

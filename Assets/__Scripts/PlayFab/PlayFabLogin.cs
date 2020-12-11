@@ -15,7 +15,7 @@ public class PlayFabLogin : MonoBehaviour
     [SerializeField] private TMP_InputField registerConfirmPassword;
 
     [Header("Login")]
-    [SerializeField] private TMP_InputField loginUsername;
+    [SerializeField] private TMP_InputField loginEmail;
     [SerializeField] private TMP_InputField loginPassword;
 
     [Header("Popup")]
@@ -44,7 +44,7 @@ public class PlayFabLogin : MonoBehaviour
 
         var request = new LoginWithEmailAddressRequest
         {
-            Email = loginUsername.text,
+            Email = loginEmail.text,
             Password = loginPassword.text
         };
 
@@ -69,7 +69,7 @@ public class PlayFabLogin : MonoBehaviour
     private void OnLoginSuccess(LoginResult result)
     {
         // Save for faster access
-        PlayerPrefs.SetString(PrefKeys.EMAIL, loginUsername.text);
+        PlayerPrefs.SetString(PrefKeys.EMAIL, loginEmail.text);
         PlayerPrefs.SetString(PrefKeys.PASSWORD, loginPassword.text);
 
         playFabStats.GetStats();
@@ -84,6 +84,7 @@ public class PlayFabLogin : MonoBehaviour
         PlayerPrefs.SetString(PrefKeys.EMAIL, registerEmail.text);
         PlayerPrefs.SetString(PrefKeys.PASSWORD, registerPassword.text);
 
+        // Set the players display name
         PlayFabClientAPI.UpdateUserTitleDisplayName(new UpdateUserTitleDisplayNameRequest
         {
             DisplayName = registerUsername.text
@@ -107,7 +108,7 @@ public class PlayFabLogin : MonoBehaviour
     private bool IsValidLogin()
     {
         // Don't accept empty input
-        if (loginUsername.text.Length == 0 || loginPassword.text.Length == 0)
+        if (loginEmail.text.Length == 0 || loginPassword.text.Length == 0)
         {
             InvalidCredentials("All fields are required.");
             return false;
