@@ -55,6 +55,8 @@ public class GameController : SingletonController
 
     void Awake()
     {
+        SetupSingleton();
+
         // Set up the LevelConfig for the current level.
         SetCurrentLevel();
     }
@@ -148,17 +150,17 @@ public class GameController : SingletonController
         // Unlock the next level after a certain number of points have been reached
         if (currentLevel == SceneNames.LEVEL_ONE)
         {
-            UnlockLevel(SceneNames.LEVEL_TWO);
+            UnlockLevel(SceneNames.LEVEL_TWO, 2);
         }
         else if (currentLevel == SceneNames.LEVEL_TWO)
         {
-            UnlockLevel(SceneNames.LEVEL_THREE);
+            UnlockLevel(SceneNames.LEVEL_THREE, 3);
         }
 
         leveledUp = true;
     }
 
-    private void UnlockLevel(string level)
+    private void UnlockLevel(string level, int number)
     {
         // Check PlayerPrefs to see if the level has already been unlocked
         bool isUnlocked = PlayerPrefs.HasKey(level);
@@ -167,6 +169,11 @@ public class GameController : SingletonController
         {
             // Mark the level as unlocked using PlayerPrefs
             PlayerPrefs.SetInt(level, 1);
+
+            // Update player stats
+            var playFabStats = FindObjectOfType<PlayFabStats>();
+            playFabStats.PlayerLevel = number;
+            playFabStats.SetStats();
 
             // Trigger an event
             onLevelUnlocked?.Invoke();

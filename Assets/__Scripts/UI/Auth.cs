@@ -12,7 +12,7 @@ public class Auth : MonoBehaviour
     [SerializeField] private TMP_InputField registerConfirmPassword;
 
     [Header("Login")]
-    [SerializeField] private TMP_InputField loginUsername;
+    [SerializeField] private TMP_InputField loginEmail;
     [SerializeField] private TMP_InputField loginPassword;
 
     [Header("Popup")]
@@ -50,7 +50,7 @@ public class Auth : MonoBehaviour
     private bool IsValidLogin()
     {
         // Don't accept empty input
-        if (loginUsername.text.Length == 0 || loginPassword.text.Length == 0)
+        if (loginEmail.text.Length == 0 || loginPassword.text.Length == 0)
         {
             InvalidCredentials("All fields are required.");
             return false;
