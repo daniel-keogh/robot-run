@@ -35,6 +35,10 @@ public class SplashScreen : MonoBehaviour
 
             PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
         }
+        else
+        {
+            sc.AuthMenu(true);
+        }
     }
 
     private void OnLoginSuccess(LoginResult result)
