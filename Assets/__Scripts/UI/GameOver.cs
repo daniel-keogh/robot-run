@@ -15,15 +15,15 @@ public class GameOver : MonoBehaviour
             switch (gc.CurrentLevel)
             {
                 case SceneNames.LEVEL_ONE:
-                    if (playFabStats.LevelOneHighScore < gc.PlayerScore)
+                    if (gc.PlayerScore > playFabStats.LevelOneHighScore)
                         playFabStats.LevelOneHighScore = gc.PlayerScore;
                     break;
                 case SceneNames.LEVEL_TWO:
-                    if (playFabStats.LevelTwoHighScore < gc.PlayerScore)
-                        playFabStats.LevelTwoHighScore = gc.PlayerScore; 
+                    if (gc.PlayerScore > playFabStats.LevelTwoHighScore)
+                        playFabStats.LevelTwoHighScore = gc.PlayerScore;
                     break;
                 case SceneNames.LEVEL_THREE:
-                    if (playFabStats.LevelThreeHighScore < gc.PlayerScore)
+                    if (gc.PlayerScore > playFabStats.LevelThreeHighScore)
                         playFabStats.LevelThreeHighScore = gc.PlayerScore;
                     break;
                 default:
