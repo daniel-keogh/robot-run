@@ -5,9 +5,8 @@ using Utilities;
 
 public class Pickup : MonoBehaviour
 {
-    [SerializeField] private int points = 1;
-    [SerializeField] private int powerupPoints = 2;
-    [SerializeField] private float rotationSpeed = 50f;
+    [SerializeField] private int points = 5;
+    [SerializeField] private float rotationSpeed = 250f;
     [SerializeField] private AudioClip pickupClip;
 
     private GameController gc;

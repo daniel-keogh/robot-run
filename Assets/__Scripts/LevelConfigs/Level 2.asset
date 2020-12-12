@@ -22,6 +22,16 @@ MonoBehaviour:
     type: 3}
   powerUpPrefab: {fileID: 3015065684937196321, guid: 3c350c27b2d084d4fa98d9c42b28bb64,
     type: 3}
+  sideContent:
+  - {fileID: 2859483514789916285, guid: 5afc9d3190da6d045a7c5408adab8ad6, type: 3}
+  - {fileID: 2859483514789916285, guid: 97210a9d41066f448833eaa0115a7fe2, type: 3}
+  - {fileID: 2859483514789916285, guid: bf51dcdc4904aaf46b17a9d7da4c9afe, type: 3}
+  - {fileID: 2859483514789916285, guid: 8469127a90d62d94c822d3358040717e, type: 3}
+  - {fileID: 2859483514789916285, guid: aea8e9b9086b56741ba752e8877dc0c3, type: 3}
   pickupsUntilLevelUp: 25
-  maxSpeed: 50
+  startSpeed: 20
+  maxSpeed: 60
   speedIncrementor: 0.5
+  minObstaclesPerRow: 1
+  maxObstaclesPerRow: 2
+  powerUpDuration: 10

@@ -165,7 +165,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 39d9ac5066e1af74cadba0ad038e742b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -215,12 +215,32 @@ PrefabInstance:
     - target: {fileID: 2818631101292981518, guid: d8c0da7af07137340b9d4bdfeb11e443,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2818631101292981518, guid: d8c0da7af07137340b9d4bdfeb11e443,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818631101292981518, guid: d8c0da7af07137340b9d4bdfeb11e443,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818631101292981518, guid: d8c0da7af07137340b9d4bdfeb11e443,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818631101292981518, guid: d8c0da7af07137340b9d4bdfeb11e443,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818631101292981518, guid: d8c0da7af07137340b9d4bdfeb11e443,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2818631101292981518, guid: d8c0da7af07137340b9d4bdfeb11e443,
         type: 3}
@@ -246,16 +266,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PickupSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 7162362353758299425, guid: d8c0da7af07137340b9d4bdfeb11e443,
-        type: 3}
-      propertyPath: timeBetweenPowerUps
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7162362353758299425, guid: d8c0da7af07137340b9d4bdfeb11e443,
-        type: 3}
-      propertyPath: spaceBetweenPickups
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8c0da7af07137340b9d4bdfeb11e443, type: 3}

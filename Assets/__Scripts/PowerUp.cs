@@ -5,16 +5,25 @@ using Utilities;
 
 public class PowerUp : MonoBehaviour
 {
-    [SerializeField] private float duration = 5f;
+    [SerializeField] private float rotationSpeed = 250f;
     [SerializeField] private AudioClip powerUpClip;
 
     private GameController gc;
     private SoundController sc;
+    private float duration;
 
     void Start()
     {
         gc = FindObjectOfType<GameController>();
         sc = FindObjectOfType<SoundController>();
+
+        duration = gc.CurrentLevelConfig.PowerUpDuration;
+    }
+
+    void Update()
+    {
+        // Rotate the pickup around
+        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
 
     private void OnTriggerEnter(Collider other)

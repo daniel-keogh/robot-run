@@ -134,7 +134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2553980ac8b051f4b9ef4f5171634530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8390708664700282840, guid: 3f3255ea7b31f4241ad8e1453d8df799, type: 3}
+  minPickups: 0
+  maxPickups: 3
+  spaceBetweenPickups: 3
+  timeBetweenPowerUps: 10
 --- !u!1 &9133583652323855198
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class LevelConfig : ScriptableObject
     [Tooltip("Set the tiles that will be spawned for this level")]
     [SerializeField] private Tile environent;
     [SerializeField] private PowerUp powerUpPrefab;
+    [Tooltip("Content that's spawned beside the tiles")]
+    [SerializeField] private List<GameObject> sideContent;
 
     [Header("Level Unlock")]
     [Tooltip("Number of pickups required to unlock the next level")]
@@ -32,11 +34,16 @@ public class LevelConfig : ScriptableObject
     [Tooltip("Maximum number of obstacles that can be spawned in a given row")]
     [SerializeField] [Range(1, 3)] private int maxObstaclesPerRow = 2;
 
+    [Header("Power Ups")]
+    [SerializeField] private float powerUpDuration = 10f;
+
+
     // Getters
     public List<Obstacle> Obstacles { get => obstacles; }
     public Pickup Collectible { get => collectible; }
     public Tile Environment { get => environent; }
     public PowerUp PowerUpPrefab { get => powerUpPrefab; }
+    public List<GameObject> SideContent { get => sideContent; }
 
     public int PickupsUntilLevelUp { get => pickupsUntilLevelUp; }
 
@@ -46,4 +53,6 @@ public class LevelConfig : ScriptableObject
 
     public int MinObstaclesPerRow { get => minObstaclesPerRow; }
     public int MaxObstaclesPerRow { get => maxObstaclesPerRow; }
+
+    public float PowerUpDuration { get => powerUpDuration; }
 }

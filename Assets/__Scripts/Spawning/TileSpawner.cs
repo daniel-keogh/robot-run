@@ -36,6 +36,14 @@ public class TileSpawner : MonoBehaviour
             transform
         );
 
+        // Spawn tile side content
+        var sideContent = Instantiate(
+            levelConfig.SideContent[Random.Range(0, levelConfig.SideContent.Count)],
+            tile.transform.position,
+            Quaternion.identity,
+            tile.transform
+        );
+
         // Set current tile as next spawn point
         spawnPoint = tile.GetComponentInChildren<SpawnPoint>();
     }

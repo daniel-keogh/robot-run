@@ -19,6 +19,10 @@ public class GameController : SingletonController
     [Header("Events")]
     [Tooltip("Event that gets fired once a new level has been unlocked")]
     [SerializeField] private UnityEvent onLevelUnlocked;
+    [Tooltip("Event that gets fired whenever a power up has been enabled")]
+    [SerializeField] private UnityEvent onPowerUpEnabled;
+    [Tooltip("Event that gets fired whenever a power up has been disabled")]
+    [SerializeField] private UnityEvent onPowerUpDisabled;
 
     public int PlayerScore
     {
@@ -88,8 +92,10 @@ public class GameController : SingletonController
     private IEnumerator StartPowerUpCountdown(float duration)
     {
         powerUpEnabled = true;
+        onPowerUpEnabled?.Invoke();
         yield return new WaitForSeconds(duration);
         powerUpEnabled = false;
+        onPowerUpDisabled?.Invoke();
     }
 
     public void LogPickup(int points)
