@@ -73,7 +73,7 @@ public class PlayFabStats : MonoBehaviour
                 new StatisticUpdate { StatisticName = L3_HIGH_SCORE, Value = levelThreeHighScore },
             }
         },
-        result => { },
+        null,
         error =>
         {
             Debug.LogError(error.GenerateErrorReport());

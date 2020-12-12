@@ -52,6 +52,7 @@ public class PickupSpawner : MonoBehaviour
             for (int i = 0; i < numToSpawn; i++)
             {
                 var pos = spawnPoints[rIndex].transform.position;
+                // Add some padding between pickups
                 pos.z += (spaceBetweenPickups * i);
 
                 Instantiate<Pickup>(

@@ -36,7 +36,7 @@ public class ObstacleSpawner : MonoBehaviour
 
             int obstacleIndex = Random.Range(0, levelConfig.Obstacles.Count);
 
-            // Spawn a new obstacle
+            // Spawn a new obstacle at the spawnIndex
             Instantiate<Obstacle>(
                 levelConfig.Obstacles[obstacleIndex],
                 spawnPoints[spawnIndex].transform.position,
@@ -44,7 +44,7 @@ public class ObstacleSpawner : MonoBehaviour
                 transform
             );
 
-            // keep track of used spawnIndexes
+            // Keep track of used spawnIndexes
             usedRows.Add(spawnIndex);
         }
     }

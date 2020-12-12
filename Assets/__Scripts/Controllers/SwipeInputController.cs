@@ -6,6 +6,7 @@ using UnityEngine;
 // Source: N3K EN - https://www.youtube.com/watch?v=sCgAb2cy6BY
 public class SwipeInputController : SingletonController
 {
+    [Tooltip("Determines how much you have to swipe for it to count")]
     [SerializeField] private float deadzone = 100f;
 
     private bool tap;

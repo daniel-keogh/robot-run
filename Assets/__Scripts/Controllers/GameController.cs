@@ -11,7 +11,7 @@ public class GameController : SingletonController
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI scoreText;
 
-    [Header("Level Config")]
+    [Header("Level Configs")]
     [SerializeField] private LevelConfig levelOne;
     [SerializeField] private LevelConfig levelTwo;
     [SerializeField] private LevelConfig levelThree;

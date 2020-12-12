@@ -54,7 +54,7 @@ public class PlayFabLogin : MonoBehaviour
             }
         };
 
-        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
+        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnAuthFailure);
     }
 
     public void OnRegister()
@@ -71,7 +71,7 @@ public class PlayFabLogin : MonoBehaviour
             DisplayName = registerUsername.text
         };
 
-        PlayFabClientAPI.RegisterPlayFabUser(registerRequest, OnRegisterSuccess, OnRegisterFailure);
+        PlayFabClientAPI.RegisterPlayFabUser(registerRequest, OnRegisterSuccess, OnAuthFailure);
     }
 
     private void OnLoginSuccess(LoginResult result)
@@ -97,13 +97,7 @@ public class PlayFabLogin : MonoBehaviour
         sceneController.MainMenu(true);
     }
 
-    private void OnLoginFailure(PlayFabError error)
-    {
-        Debug.LogError(error.GenerateErrorReport());
-        InvalidCredentials(error.ErrorMessage);
-    }
-
-    private void OnRegisterFailure(PlayFabError error)
+    private void OnAuthFailure(PlayFabError error)
     {
         Debug.LogError(error.GenerateErrorReport());
         InvalidCredentials(error.ErrorMessage);
