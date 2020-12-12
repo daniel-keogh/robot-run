@@ -44,6 +44,7 @@ public class PlayFabStats : MonoBehaviour
 
     void Awake()
     {
+        // Make this object a singleton
         if (instance == null)
         {
             instance = this;
@@ -61,6 +62,7 @@ public class PlayFabStats : MonoBehaviour
 
     public void SetStats()
     {
+        // Update this players statistics
         PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate>
@@ -71,10 +73,7 @@ public class PlayFabStats : MonoBehaviour
                 new StatisticUpdate { StatisticName = L3_HIGH_SCORE, Value = levelThreeHighScore },
             }
         },
-        result =>
-        {
-            Debug.Log("User stats updated");
-        },
+        result => { },
         error =>
         {
             Debug.LogError(error.GenerateErrorReport());
@@ -92,6 +91,7 @@ public class PlayFabStats : MonoBehaviour
 
     public void OnGetStats(GetPlayerStatisticsResult result)
     {
+        // Store the results that were fetched
         foreach (var stat in result.Statistics)
         {
             switch (stat.StatisticName)

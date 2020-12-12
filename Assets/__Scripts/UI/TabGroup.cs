@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 // Modified version of this script: https://www.youtube.com/watch?v=211t6r12XPQ
 public class TabGroup : MonoBehaviour
@@ -70,6 +68,7 @@ public class TabGroup : MonoBehaviour
             }
             else
             {
+                // Disable all other tabs
                 objectsToSwap[i].SetActive(false);
             }
         }

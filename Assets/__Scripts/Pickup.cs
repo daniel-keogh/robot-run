@@ -21,6 +21,7 @@ public class Pickup : MonoBehaviour
 
     void Update()
     {
+        // Rotate the pickup around
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
 

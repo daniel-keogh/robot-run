@@ -42,6 +42,7 @@ public class PlayFabLogin : MonoBehaviour
         if (!IsValidLogin())
             return;
 
+        // Try and login with the email and password
         var request = new LoginWithEmailAddressRequest
         {
             Email = loginEmail.text,
@@ -56,6 +57,7 @@ public class PlayFabLogin : MonoBehaviour
         if (!IsValidRegister())
             return;
 
+        // Try and register the user
         var registerRequest = new RegisterPlayFabUserRequest
         {
             Email = registerEmail.text,
@@ -68,10 +70,11 @@ public class PlayFabLogin : MonoBehaviour
 
     private void OnLoginSuccess(LoginResult result)
     {
-        // Save for faster access
+        // Save locally for faster access
         PlayerPrefs.SetString(PrefKeys.EMAIL, loginEmail.text);
         PlayerPrefs.SetString(PrefKeys.PASSWORD, loginPassword.text);
 
+        // Fetch the users stats
         playFabStats.GetStats();
 
         sceneController.MainMenu(true);
@@ -79,7 +82,7 @@ public class PlayFabLogin : MonoBehaviour
 
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        // Save for faster access
+        // Save locally for faster access
         PlayerPrefs.SetString(PrefKeys.USERNAME, registerUsername.text);
         PlayerPrefs.SetString(PrefKeys.EMAIL, registerEmail.text);
         PlayerPrefs.SetString(PrefKeys.PASSWORD, registerPassword.text);

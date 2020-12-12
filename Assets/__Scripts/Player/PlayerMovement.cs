@@ -7,8 +7,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Speed")]
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private float jumpSpeed = 3f;
+    [SerializeField] private float jumpSpeed = 25f;
 
     [Header("Lanes")]
     [Tooltip("Defines the width of each lane in the track")]
@@ -18,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private int currentLane = 1;
     private bool isJumping = false;
 
+    private float speed;
     private float maxSpeed;
     private float speedIncrementor;
 
@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         swipeInput = FindObjectOfType<SwipeInputController>();
         gc = FindObjectOfType<GameController>();
 
+        speed = gc.CurrentLevelConfig.StartSpeed;
         maxSpeed = gc.CurrentLevelConfig.MaxSpeed;
         speedIncrementor = gc.CurrentLevelConfig.SpeedIncrementor;
     }

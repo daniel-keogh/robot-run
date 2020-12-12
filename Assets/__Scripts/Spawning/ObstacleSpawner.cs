@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     private IList<SpawnPoint> spawnPoints;
-
     private LevelConfig levelConfig;
 
     void Start()
@@ -37,6 +36,7 @@ public class ObstacleSpawner : MonoBehaviour
 
             int obstacleIndex = Random.Range(0, levelConfig.Obstacles.Count);
 
+            // Spawn a new obstacle
             Instantiate<Obstacle>(
                 levelConfig.Obstacles[obstacleIndex],
                 spawnPoints[spawnIndex].transform.position,

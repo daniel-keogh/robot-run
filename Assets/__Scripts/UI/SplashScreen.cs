@@ -22,6 +22,7 @@ public class SplashScreen : MonoBehaviour
     {
         yield return new WaitForSeconds(splashDuration);
 
+        // If there's an email in PlayerPrefs try and login using that
         if (PlayerPrefs.HasKey(PrefKeys.EMAIL))
         {
             string email = PlayerPrefs.GetString(PrefKeys.EMAIL);
@@ -43,10 +44,12 @@ public class SplashScreen : MonoBehaviour
 
     private void OnLoginSuccess(LoginResult result)
     {
+        // User is automatically logged in
         sc.MainMenu(true);
     }
     private void OnLoginFailure(PlayFabError error)
     {
+        // Failed login go to auth menu
         sc.AuthMenu(true);
     }
 }

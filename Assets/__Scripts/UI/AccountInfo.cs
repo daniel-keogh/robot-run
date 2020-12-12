@@ -21,7 +21,7 @@ public class AccountInfo : MonoBehaviour
 
         if (PlayerPrefs.HasKey(PrefKeys.EMAIL))
         {
-            username.text += " " + PlayerPrefs.GetString(PrefKeys.EMAIL);
+            email.text += " " + PlayerPrefs.GetString(PrefKeys.EMAIL);
         }
     }
 

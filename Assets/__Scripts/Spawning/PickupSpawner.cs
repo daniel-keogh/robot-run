@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PickupSpawner : MonoBehaviour
 {
+    [Tooltip("Minimum number of pickups per tile")]
     [SerializeField] private int minPickups = 0;
+    [Tooltip("Maximum number of pickups per tile")]
     [SerializeField] private int maxPickups = 3;
+    [Tooltip("Adds some padding between pickups")]
     [SerializeField] private float spaceBetweenPickups = 3f;
 
     [Header("Power Ups")]
@@ -39,6 +42,7 @@ public class PickupSpawner : MonoBehaviour
                 Quaternion.identity,
                 transform
             );
+
             lastPowerUpTime = Time.time;
         }
         else
@@ -68,6 +72,7 @@ public class PickupSpawner : MonoBehaviour
             return false;
         }
 
+        // Check if the player is due another power up
         return (Time.time - lastPowerUpTime) > timeBetweenPowerUps;
     }
 }

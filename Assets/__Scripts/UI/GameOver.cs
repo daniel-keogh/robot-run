@@ -38,6 +38,7 @@ public class GameOver : MonoBehaviour
                 return;
             }
 
+            // Update the players stats since they have a new high score
             playFabStats.SetStats();
         }
     }
