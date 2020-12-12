@@ -121,31 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &125308641 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 125308641, guid: d4b8110d2d7ae65429eea08e43a444a4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6512693994570118007}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &125308642
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125308641}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0e024b8e6fbb3cd4c8d58e8b495edbef, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &322385022
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +157,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -463,26 +438,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 125308643, guid: d4b8110d2d7ae65429eea08e43a444a4, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.9254902
-      objectReference: {fileID: 0}
-    - target: {fileID: 125308643, guid: d4b8110d2d7ae65429eea08e43a444a4, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.9411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 125308643, guid: d4b8110d2d7ae65429eea08e43a444a4, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.94509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 125308643, guid: d4b8110d2d7ae65429eea08e43a444a4, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 1693577452
-      objectReference: {fileID: 0}
-    - target: {fileID: 125308643, guid: d4b8110d2d7ae65429eea08e43a444a4, type: 3}
-      propertyPath: m_fontColor.a
-      value: 0.39215687
-      objectReference: {fileID: 0}
     - target: {fileID: 6064791897352749547, guid: d4b8110d2d7ae65429eea08e43a444a4,
         type: 3}
       propertyPath: m_LocalPosition.x

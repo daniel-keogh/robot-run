@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 125308642}
   - component: {fileID: 125308644}
   - component: {fileID: 125308643}
+  - component: {fileID: 3234688683201520519}
   m_Layer: 5
   m_Name: LoadingText
   m_TagString: Untagged
@@ -74,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294045932
-  m_fontColor: {r: 0.9254902, g: 0.9411765, b: 0.94509804, a: 1}
+    rgba: 1693577452
+  m_fontColor: {r: 0.9254902, g: 0.9411765, b: 0.94509804, a: 0.39215687}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -134,6 +135,25 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &3234688683201520519
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125308641}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0e024b8e6fbb3cd4c8d58e8b495edbef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &331505616
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54c0501cce827040bea277e53bafbe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashDuration: 2
+  splashDuration: 3
 --- !u!1001 &6512693994703422050
 PrefabInstance:
   m_ObjectHideFlags: 0

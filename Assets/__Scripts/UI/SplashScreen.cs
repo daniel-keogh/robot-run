@@ -15,6 +15,7 @@ public class SplashScreen : MonoBehaviour
     {
         sc = FindObjectOfType<SceneController>();
 
+        // Try and log the user in automatically
         StartCoroutine(ChooseMenu());
     }
 
@@ -22,7 +23,7 @@ public class SplashScreen : MonoBehaviour
     {
         yield return new WaitForSeconds(splashDuration);
 
-        // If there's an email in PlayerPrefs try and login using that
+        // If there's an email in PlayerPrefs try and login automatically using that
         if (PlayerPrefs.HasKey(PrefKeys.EMAIL))
         {
             string email = PlayerPrefs.GetString(PrefKeys.EMAIL);
@@ -49,7 +50,7 @@ public class SplashScreen : MonoBehaviour
     }
     private void OnLoginFailure(PlayFabError error)
     {
-        // Failed login go to auth menu
+        // Failed login, go to auth menu
         sc.AuthMenu(true);
     }
 }

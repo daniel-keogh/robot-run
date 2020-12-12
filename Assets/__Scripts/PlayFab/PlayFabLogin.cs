@@ -25,6 +25,7 @@ public class PlayFabLogin : MonoBehaviour
     private PlayFabStats playFabStats;
 
     private const string TITLE_ID = "3E239";
+    private const int MIN_PASSWORD_LEN = 6;
 
     public void Start()
     {
@@ -46,7 +47,11 @@ public class PlayFabLogin : MonoBehaviour
         var request = new LoginWithEmailAddressRequest
         {
             Email = loginEmail.text,
-            Password = loginPassword.text
+            Password = loginPassword.text,
+            InfoRequestParameters = new GetPlayerCombinedInfoRequestParams
+            {
+                GetPlayerProfile = true,
+            }
         };
 
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
@@ -62,7 +67,8 @@ public class PlayFabLogin : MonoBehaviour
         {
             Email = registerEmail.text,
             Password = registerPassword.text,
-            Username = registerUsername.text
+            Username = registerUsername.text,
+            DisplayName = registerUsername.text
         };
 
         PlayFabClientAPI.RegisterPlayFabUser(registerRequest, OnRegisterSuccess, OnRegisterFailure);
@@ -73,6 +79,7 @@ public class PlayFabLogin : MonoBehaviour
         // Save locally for faster access
         PlayerPrefs.SetString(PrefKeys.EMAIL, loginEmail.text);
         PlayerPrefs.SetString(PrefKeys.PASSWORD, loginPassword.text);
+        PlayerPrefs.SetString(PrefKeys.USERNAME, result.InfoResultPayload.PlayerProfile.DisplayName);
 
         // Fetch the users stats
         playFabStats.GetStats();
@@ -83,15 +90,9 @@ public class PlayFabLogin : MonoBehaviour
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
         // Save locally for faster access
-        PlayerPrefs.SetString(PrefKeys.USERNAME, registerUsername.text);
         PlayerPrefs.SetString(PrefKeys.EMAIL, registerEmail.text);
         PlayerPrefs.SetString(PrefKeys.PASSWORD, registerPassword.text);
-
-        // Set the players display name
-        PlayFabClientAPI.UpdateUserTitleDisplayName(new UpdateUserTitleDisplayNameRequest
-        {
-            DisplayName = registerUsername.text
-        }, null, OnRegisterFailure);
+        PlayerPrefs.SetString(PrefKeys.USERNAME, registerUsername.text);
 
         sceneController.MainMenu(true);
     }
@@ -138,6 +139,13 @@ public class PlayFabLogin : MonoBehaviour
         if (registerEmail.text.IndexOf("@") == -1)
         {
             InvalidCredentials("Please enter a valid email address.");
+            return false;
+        }
+
+        // PlayFab complains if passwords are under 6 characters
+        if (registerPassword.text.Length < MIN_PASSWORD_LEN)
+        {
+            InvalidCredentials($"Password must contain at least {MIN_PASSWORD_LEN} characters.");
             return false;
         }
 

@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using PlayFab;
+using PlayFab.ClientModels;
 using UnityEngine;
 using TMPro;
 using Utilities;
@@ -28,6 +30,7 @@ public class AccountInfo : MonoBehaviour
     public void Logout()
     {
         PlayerPrefs.DeleteAll();
+        PlayFabClientAPI.ForgetAllCredentials();
         FindObjectOfType<SceneController>()?.AuthMenu(true);
     }
 }

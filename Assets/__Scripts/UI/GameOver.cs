@@ -12,30 +12,22 @@ public class GameOver : MonoBehaviour
 
         if (gc && playFabStats)
         {
-            if (gc.CurrentLevel == SceneNames.LEVEL_ONE)
+            switch (gc.CurrentLevel)
             {
-                if (playFabStats.LevelOneHighScore < gc.PlayerScore)
-                {
-                    playFabStats.LevelOneHighScore = gc.PlayerScore;
-                }
-            }
-            else if (gc.CurrentLevel == SceneNames.LEVEL_TWO)
-            {
-                if (playFabStats.LevelTwoHighScore < gc.PlayerScore)
-                {
-                    playFabStats.LevelTwoHighScore = gc.PlayerScore;
-                }
-            }
-            else if (gc.CurrentLevel == SceneNames.LEVEL_THREE)
-            {
-                if (playFabStats.LevelThreeHighScore < gc.PlayerScore)
-                {
-                    playFabStats.LevelThreeHighScore = gc.PlayerScore;
-                }
-            }
-            else
-            {
-                return;
+                case SceneNames.LEVEL_ONE:
+                    if (playFabStats.LevelOneHighScore < gc.PlayerScore)
+                        playFabStats.LevelOneHighScore = gc.PlayerScore;
+                    break;
+                case SceneNames.LEVEL_TWO:
+                    if (playFabStats.LevelTwoHighScore < gc.PlayerScore)
+                        playFabStats.LevelTwoHighScore = gc.PlayerScore; 
+                    break;
+                case SceneNames.LEVEL_THREE:
+                    if (playFabStats.LevelThreeHighScore < gc.PlayerScore)
+                        playFabStats.LevelThreeHighScore = gc.PlayerScore;
+                    break;
+                default:
+                    return;
             }
 
             // Update the players stats since they have a new high score
