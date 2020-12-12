@@ -8,13 +8,13 @@ using Utilities;
 
 public class PlayFabLogin : MonoBehaviour
 {
-    [Header("Register")]
+    [Header("Register Inputs")]
     [SerializeField] private TMP_InputField registerUsername;
     [SerializeField] private TMP_InputField registerEmail;
     [SerializeField] private TMP_InputField registerPassword;
     [SerializeField] private TMP_InputField registerConfirmPassword;
 
-    [Header("Login")]
+    [Header("Login Inputs")]
     [SerializeField] private TMP_InputField loginEmail;
     [SerializeField] private TMP_InputField loginPassword;
 
@@ -29,6 +29,7 @@ public class PlayFabLogin : MonoBehaviour
 
     public void Start()
     {
+        // Make sure the TitleId is set
         if (string.IsNullOrEmpty(PlayFabSettings.TitleId))
         {
             PlayFabSettings.TitleId = TITLE_ID;

@@ -57,8 +57,8 @@ public class PlayFabLeaderboard : MonoBehaviour
         foreach (var player in result.Leaderboard)
         {
             // Print out the results
-            var obj = Instantiate(leaderboardItem, layoutGroup.transform, false);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = (
+            var item = Instantiate(leaderboardItem, layoutGroup.transform, false);
+            item.GetComponentInChildren<TextMeshProUGUI>().text = (
                 $@"<align=left>{player.Position + 1}. {player.DisplayName}<line-height=0.001>
                 <align=right>{string.Format("{0:n0}", player.StatValue)}"
             );

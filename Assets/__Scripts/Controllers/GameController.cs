@@ -93,7 +93,9 @@ public class GameController : SingletonController
     {
         powerUpEnabled = true;
         onPowerUpEnabled?.Invoke();
+
         yield return new WaitForSeconds(duration);
+
         powerUpEnabled = false;
         onPowerUpDisabled?.Invoke();
     }
@@ -176,7 +178,7 @@ public class GameController : SingletonController
             // Mark the level as unlocked using PlayerPrefs
             PlayerPrefs.SetInt(level, 1);
 
-            // Update player stats
+            // Use PlayFab to save the user's current level
             var playFabStats = FindObjectOfType<PlayFabStats>();
 
             if (playFabStats)

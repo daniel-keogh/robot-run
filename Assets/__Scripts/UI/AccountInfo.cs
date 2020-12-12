@@ -28,6 +28,15 @@ public class AccountInfo : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         PlayFabClientAPI.ForgetAllCredentials();
+
+        // Destroy PlayFabStats singleton
+        var stats = FindObjectOfType<PlayFabStats>();
+
+        if (stats)
+        {
+            Destroy(stats.gameObject);
+        }
+
         FindObjectOfType<SceneController>()?.AuthMenu(true);
     }
 }

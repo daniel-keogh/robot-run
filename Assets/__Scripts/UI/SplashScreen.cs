@@ -7,7 +7,7 @@ using Utilities;
 
 public class SplashScreen : MonoBehaviour
 {
-    [SerializeField] private float splashDuration = 2f;
+    [SerializeField] private float splashDuration = 3f;
 
     private SceneController sc;
 
@@ -39,6 +39,7 @@ public class SplashScreen : MonoBehaviour
         }
         else
         {
+            // Failed login, go to auth menu
             sc.AuthMenu(true);
         }
     }
@@ -46,6 +47,7 @@ public class SplashScreen : MonoBehaviour
     private void OnLoginSuccess(LoginResult result)
     {
         // User is automatically logged in
+        FindObjectOfType<PlayFabStats>().GetStats();
         sc.MainMenu(true);
     }
     private void OnLoginFailure(PlayFabError error)

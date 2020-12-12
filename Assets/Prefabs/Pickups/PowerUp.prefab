@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 250
-  powerUpClip: {fileID: 0}
+  powerUpClip: {fileID: 8300000, guid: fea638edf8a37dd43bb26d091e374a05, type: 3}
 --- !u!1 &3015065685080372421
 GameObject:
   m_ObjectHideFlags: 0

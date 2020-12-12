@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
 
+[RequireComponent(typeof(Image))]
 public class LevelButton : MonoBehaviour
 {
     [Header("Locked")]
@@ -16,22 +17,35 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private PopupBox popupBox;
 
     private SceneController sc;
+    private PlayFabStats playFabStats;
     private bool isUnlocked;
     private string levelName;
+    private Image buttonImage;
 
     void Start()
     {
+        buttonImage = GetComponent<Image>();
+
         sc = FindObjectOfType<SceneController>();
+        playFabStats = FindObjectOfType<PlayFabStats>();
 
-        // Check if the requested level is unlocked using PlayerPrefs
         levelName = GetLevelName();
-        isUnlocked = PlayerPrefs.HasKey(levelName);
+    }
 
-        if (!isUnlocked)
+    void Update()
+    {
+        // Check if the requested level is unlocked
+        if (playFabStats != null && playFabStats.PlayerLevel >= levelNumber)
         {
+            isUnlocked = true;
+        }
+        else
+        {
+            isUnlocked = false;
+
             // Alter the appearance of the button to indicate the level is
             // not available yet
-            GetComponent<Image>().color = lockedColor;
+            buttonImage.color = lockedColor;
         }
     }
 
@@ -65,6 +79,5 @@ public class LevelButton : MonoBehaviour
             default:
                 return null;
         }
-
     }
 }
