@@ -183,6 +183,9 @@ public class GameController : SingletonController
 
             if (playFabStats)
             {
+                if (number == playFabStats.PlayerLevel)
+                    return; // already unlocked
+
                 playFabStats.PlayerLevel = number;
                 playFabStats.SetStats();
             }
