@@ -11,9 +11,6 @@ public class AccountInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI username;
     [SerializeField] private TextMeshProUGUI email;
 
-    private string prevUsernameText;
-    private string prevEmailText;
-
     void Start()
     {
         if (PlayerPrefs.HasKey(PrefKeys.USERNAME))
